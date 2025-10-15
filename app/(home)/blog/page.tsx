@@ -538,7 +538,7 @@ export default function Contact() {
                 height={0}
                 alt="real"
               />
-              <div className="text-[var(--secondaryTextColor)] font-bold mb-9 text-[25px]">
+              <div className="text-[var(--secondaryTextColor)] font-bold mb-10 text-[25px]">
                 Latest Blog
               </div>
               <div className="grid grid-cols-2">
