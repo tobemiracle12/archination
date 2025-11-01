@@ -107,7 +107,7 @@ export default function FeatureHomes() {
                         <div className="text-black/70 text-[15px] mr-2">
                           Added:
                         </div>
-                        <div className="text-[var(--primaryTextColor)] text-[13px]">
+                        <div className="text-[var(--TertiaryTextColor)] text-[13px]">
                           June 15, 2020
                         </div>
                       </div>
@@ -115,14 +115,14 @@ export default function FeatureHomes() {
                         <div className="text-sm mr-7">
                           <div className="font-bold mb-2">Bedrooms</div>
                           <div className="flex ">
-                            <BedDouble className="text-[var(--primaryTextColor)] mr-3" />{' '}
+                            <BedDouble className="text-[var(--TertiaryTextColor)] mr-3" />{' '}
                             3
                           </div>
                         </div>
                         <div className="text-sm mr-7">
                           <div className="font-bold mb-2">Bathrooms</div>
                           <div className="flex ">
-                            <ShowerHeadIcon className="text-[var(--primaryTextColor)] mr-3" />{' '}
+                            <ShowerHeadIcon className="text-[var(--TertiaryTextColor)] mr-3" />{' '}
                             3
                           </div>
                         </div>
@@ -131,7 +131,7 @@ export default function FeatureHomes() {
                           <div className="flex ">
                             <LandPlot className="text-[var(--primaryTextColor)] mr-3" />{' '}
                             4300
-                            <span className="ml-2 text-[var(--primaryTextColor)]">
+                            <span className="ml-2 text-[var(--TertiaryTextColor)]">
                               sq ft
                             </span>
                           </div>
@@ -147,10 +147,10 @@ export default function FeatureHomes() {
                           </div>
                         </div>
                         <div className="flex text-center">
-                          <div className="text-[30px] text-[var(--primaryTextColor)] mr-3">
+                          <div className="text-[30px] text-[var(--TertiaryTextColor)] mr-3">
                             <i className="bi bi-suit-heart-fill"></i>
                           </div>
-                          <div className="text-[30px] text-[var(--primaryTextColor)]">
+                          <div className="text-[30px] text-[var(--TertiaryTextColor)]">
                             <i className="bi bi-arrow-left-right"></i>
                           </div>
                         </div>

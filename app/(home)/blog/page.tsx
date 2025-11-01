@@ -205,7 +205,7 @@ export default function Contact() {
               </button>
             </form>
           </div>
-          <div className="text-[var(--secondaryTextColor)] font-bold text-[30px] mb-3">
+          <div className="text-[var(--TertiaryTextColor)] font-bold text-[30px] mb-3">
             Top Stories
           </div>
           <div className="grid grid-cols-4 gap-5">
@@ -538,7 +538,7 @@ export default function Contact() {
                 height={0}
                 alt="real"
               />
-              <div className="text-[var(--secondaryTextColor)] font-bold mb-10 text-[25px]">
+              <div className="text-[var(--TertiaryTextColor)] font-bold mb-10 text-[25px]">
                 Latest Blog
               </div>
               <div className="grid grid-cols-2">
@@ -590,7 +590,7 @@ export default function Contact() {
               </div>
             </div>
             <div className="flex flex-col items-start leading-5">
-              <div className="text-[22px] text-[var(--secondaryTextColor)] font-bold mb-[1px]">
+              <div className="text-[22px] text-[var(--TertiaryTextColor)] font-bold mb-[1px]">
                 POPULAR NEWS
               </div>
               <div className="flex items-center w-full border-b py-[30px] border-b-gray-300">
@@ -662,15 +662,15 @@ export default function Contact() {
                   <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
                     FASHION
                   </div>
-                  <div className="text-[18px] mb-3 font-bold text-[var(--primaryTextColor)] line-clamp-2 hover:underline">
+                  <div className="text-[18px] mb-3 font-bold text-[var(--TertiaryTextColor)] line-clamp-2 hover:underline">
                     <Link href={'/'} className="">
                       How to have fantastic trip without blowing your budget of
                     </Link>
                   </div>
                   <div className="flex items-center">
-                    <div className="flex text-[var(--secondaryTextColor)]">
+                    <div className="flex text-[var(--TertiaryTextColor)]">
                       <i className="bi bi-calendar mr-2"></i>
-                      <div className="text-[var(--primaryTextColor)] font-semibold text-[12px]">
+                      <div className="text-[var(--TertiaryTextColor)] font-semibold text-[12px]">
                         DECEMBER 9, 2021
                       </div>
                     </div>
@@ -690,15 +690,15 @@ export default function Contact() {
                   <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
                     FASHION
                   </div>
-                  <div className="text-[18px] mb-3 font-bold text-[var(--primaryTextColor)] line-clamp-2 hover:underline">
+                  <div className="text-[18px] mb-3 font-bold text-[var(--TertiaryTextColor)] line-clamp-2 hover:underline">
                     <Link href={'/'} className="">
                       How to have fantastic trip without blowing your budget of
                     </Link>
                   </div>
                   <div className="flex items-center">
-                    <div className="flex text-[var(--secondaryTextColor)]">
+                    <div className="flex text-[var(--TertiaryTextColor)]">
                       <i className="bi bi-calendar mr-2"></i>
-                      <div className="text-[var(--primaryTextColor)] font-semibold text-[12px]">
+                      <div className="text-[var(--TertiaryTextColor)] font-semibold text-[12px]">
                         DECEMBER 9, 2021
                       </div>
                     </div>
