@@ -9,7 +9,7 @@ export default function HomeLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="text-[var(--primary-text-color)]">
+    <div className="text-[var(--TertiaryTextColor)]">
       <PublicHeader />
       <PublicNavbar />
       {children}
