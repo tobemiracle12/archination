@@ -96,7 +96,7 @@ export default function FeatureHomes() {
                           Home in Merrick Way
                         </Link>
                       </div>
-                      <div className="text line-clamp-2 overflow-ellipsis mb-5">
+                      <div className="text line-clamp-2 overflow-ellipsis mb-5 text-[var(--TertiaryTextColor)]">
                         RealHomes gracefully facilitates real estate business
                         owners by making property management easier &
                         affordable.RealHomes gracefully facilitates real estate

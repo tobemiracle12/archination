@@ -216,7 +216,7 @@ export default function Home() {
       <div className="flex py-[75px] bg-[var(--secondaryBackground)] justify-center">
         <div className="customContainer">
           <div className="flex testimony flex-col justify-center text-center">
-            <div className="text-[30px] text-[var(--secondaryTextColor)] font-semibold mb-5">
+            <div className="text-[30px] text-[var(--TertiaryTextColor)] font-semibold mb-5">
               Words From Our Customers
             </div>
             <div className="t"></div>
