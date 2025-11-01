@@ -187,7 +187,7 @@ export default function Contact() {
       <div className="flex py-[75px] justify-center bg-white">
         <div className="customContainer">
           <div className="w-full rounded-md shadow-lg py-3 mb-10">
-            <form className="grid grid-cols-2 text-[var(--primaryTextColor)] md:grid-cols-4 p-5 rounded-[5px] bg-white w-full">
+            <form className="grid grid-cols-2 text-[var(--tertiaryTextColor)] md:grid-cols-4 p-5 rounded-[5px] bg-white w-full">
               <div className="flex px-[10px] border border-gray-200 outline-0 text-black rounded items-center col-span-3">
                 <input
                   type="text"
@@ -236,7 +236,7 @@ export default function Contact() {
                   Novak appeals in court against dear less Care cancellation of
                 </Link>
                 <div className="flex items-center ">
-                  <div className="text mr-1  text-[var(#C1C1C4)] text-[12px]">
+                  <div className="text mr-1  text-[var(--tertiaryTextColor)] text-[12px]">
                     BY
                   </div>
                   <Link
@@ -247,7 +247,9 @@ export default function Contact() {
                   </Link>
                   <div className="text-black flex">
                     <i className="bi bi-calendar mr-2"></i>
-                    <div className="text-[var(#C1C1C4)]">January 21, 2022</div>
+                    <div className="text-[var(--tertiaryTextColor)]">
+                      January 21, 2022
+                    </div>
                   </div>
                 </div>
               </div>
@@ -279,7 +281,7 @@ export default function Contact() {
                   Novak appeals in court against dear less Care cancellation of
                 </Link>
                 <div className="flex items-center ">
-                  <div className="text mr-1  text-[var(#C1C1C4)] text-[12px]">
+                  <div className="text mr-1  text-[var(--tertiaryTextColor)] text-[12px]">
                     BY
                   </div>
                   <Link
@@ -290,7 +292,9 @@ export default function Contact() {
                   </Link>
                   <div className="text-black flex">
                     <i className="bi bi-calendar mr-2"></i>
-                    <div className="text-[var(#C1C1C4)]">January 21, 2022</div>
+                    <div className="text-[var(--tertiaryTextColor)]">
+                      January 21, 2022
+                    </div>
                   </div>
                 </div>
               </div>
@@ -322,7 +326,7 @@ export default function Contact() {
                   Novak appeals in court against dear less Care cancellation of
                 </Link>
                 <div className="flex items-center ">
-                  <div className="text mr-1  text-[var(#C1C1C4)] text-[12px]">
+                  <div className="text mr-1  text-[var(--tertiaryTextColor)] text-[12px]">
                     BY
                   </div>
                   <Link
@@ -333,7 +337,9 @@ export default function Contact() {
                   </Link>
                   <div className="text-black flex">
                     <i className="bi bi-calendar mr-2"></i>
-                    <div className="text-[var(#C1C1C4)]">January 21, 2022</div>
+                    <div className="text-[var(--tertiaryTextColor)]">
+                      January 21, 2022
+                    </div>
                   </div>
                 </div>
               </div>
@@ -365,7 +371,7 @@ export default function Contact() {
                   Novak appeals in court against dear less Care cancellation of
                 </Link>
                 <div className="flex items-center ">
-                  <div className="text mr-1  text-[var(#C1C1C4)] text-[12px]">
+                  <div className="text mr-1  text-[var(--tertiaryTextColor)] text-[12px]">
                     BY
                   </div>
                   <Link
@@ -376,7 +382,9 @@ export default function Contact() {
                   </Link>
                   <div className="text-black flex">
                     <i className="bi bi-calendar mr-2"></i>
-                    <div className="text-[var(#C1C1C4)]">January 21, 2022</div>
+                    <div className="text-[var(--tertiaryTextColor)]">
+                      January 21, 2022
+                    </div>
                   </div>
                 </div>
               </div>
@@ -564,12 +572,12 @@ export default function Contact() {
                     Novak appeals in court against dear less Care cancellation
                     of Australian
                   </Link>
-                  <div className="text-[var(#AAABAD)] mb-3">
+                  <div className="text-[var(--tertiaryTextColor)] mb-3">
                     Ahen an unknown printer took a galley of type and their
                     scrambled imaketype specimen book
                   </div>
                   <div className="flex items-center mb-2">
-                    <div className="text mr-1  text-[var(#AAABAD)]  text-[12px]">
+                    <div className="text mr-1  text-[var(--tertiaryTextColor)]  text-[12px]">
                       BY
                     </div>
                     <Link
@@ -580,7 +588,9 @@ export default function Contact() {
                     </Link>
                     <div className="flex">
                       <i className="bi bi-calendar mr-2"></i>
-                      <div className="text-[var(#AAABAD)]">January 21</div>
+                      <div className="text-[var(--tertiaryTextColor)]">
+                        January 21
+                      </div>
                     </div>
                   </div>
                   <div className="text-[12px] rounded hover:bg-[var(--customTextColor)] transition duration-500 text-black/60 items-center text-[var  (--widgetBackground)] font-bold border px-6 py-2 border-gray-300 hover:text-white">
@@ -603,16 +613,16 @@ export default function Contact() {
                   alt="real"
                 />
                 <div className="flex flex-col">
-                  <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
+                  <div className="text-[var(--tertiaryTextColor)] mb-1 font-semibold text-[12px]">
                     FASHION
                   </div>
-                  <div className="text-[18px] mb-3 font-bold text-[var(--primaryTextColor)] line-clamp-2 hover:underline">
+                  <div className="text-[18px] mb-3 font-bold text-[var(--tertiaryTextColor)] line-clamp-2 hover:underline">
                     <Link href={'/'} className="">
                       How to have fantastic trip without blowing your budget of
                     </Link>
                   </div>
                   <div className="flex items-center">
-                    <div className="flex text-[var(--secondaryTextColor)]">
+                    <div className="flex text-[var(--tertiaryTextColor)]">
                       <i className="bi bi-calendar mr-2"></i>
                       <div className="text-[var(--primaryTextColor)] font-semibold text-[12px]">
                         DECEMBER 9, 2021
@@ -631,44 +641,16 @@ export default function Contact() {
                   alt="real"
                 />
                 <div className="flex flex-col">
-                  <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
+                  <div className="text-[var(--tertiaryTextColor)] mb-1 font-semibold text-[12px]">
                     FASHION
                   </div>
-                  <div className="text-[18px] mb-3 font-bold text-[var(--primaryTextColor)] line-clamp-2 hover:underline">
+                  <div className="text-[18px] mb-3 font-bold text-[var(--tertiaryTextColor)] line-clamp-2 hover:underline">
                     <Link href={'/'} className="">
                       How to have fantastic trip without blowing your budget of
                     </Link>
                   </div>
                   <div className="flex items-center">
-                    <div className="flex text-[var(--secondaryTextColor)]">
-                      <i className="bi bi-calendar mr-2"></i>
-                      <div className="text-[var(--primaryTextColor)] font-semibold text-[12px]">
-                        DECEMBER 9, 2021
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center w-full border-b py-[30px] border-b-gray-300">
-                <Image
-                  src="/blogImage1.jpg"
-                  sizes="100vw"
-                  className="h-[100px] mr-3 object-cover rounded-full w-[100px]"
-                  width={0}
-                  height={0}
-                  alt="real"
-                />
-                <div className="flex flex-col">
-                  <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
-                    FASHION
-                  </div>
-                  <div className="text-[18px] mb-3 font-bold text-[var(--TertiaryTextColor)] line-clamp-2 hover:underline">
-                    <Link href={'/'} className="">
-                      How to have fantastic trip without blowing your budget of
-                    </Link>
-                  </div>
-                  <div className="flex items-center">
-                    <div className="flex text-[var(--TertiaryTextColor)]">
+                    <div className="flex text-[var(--tertiaryTextColor)]">
                       <i className="bi bi-calendar mr-2"></i>
                       <div className="text-[var(--tertiaryTextColor)] font-semibold text-[12px]">
                         DECEMBER 9, 2021
@@ -687,7 +669,7 @@ export default function Contact() {
                   alt="real"
                 />
                 <div className="flex flex-col">
-                  <div className="text-[var(#AAABAD)] mb-1 font-semibold text-[12px]">
+                  <div className="text-[var(--tertiaryTextColor)] mb-1 font-semibold text-[12px]">
                     FASHION
                   </div>
                   <div className="text-[18px] mb-3 font-bold text-[var(--tertiaryTextColor)] line-clamp-2 hover:underline">
@@ -698,7 +680,35 @@ export default function Contact() {
                   <div className="flex items-center">
                     <div className="flex text-[var(--tertiaryTextColor)]">
                       <i className="bi bi-calendar mr-2"></i>
-                      <div className="text-[var(--TertiaryTextColor)] font-semibold text-[12px]">
+                      <div className="text-[var(--tertiaryTextColor)] font-semibold text-[12px]">
+                        DECEMBER 9, 2021
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex items-center w-full border-b py-[30px] border-b-gray-300">
+                <Image
+                  src="/blogImage1.jpg"
+                  sizes="100vw"
+                  className="h-[100px] mr-3 object-cover rounded-full w-[100px]"
+                  width={0}
+                  height={0}
+                  alt="real"
+                />
+                <div className="flex flex-col">
+                  <div className="text-[var(--tertiaryTextColor)] mb-1 font-semibold text-[12px]">
+                    FASHION
+                  </div>
+                  <div className="text-[18px] mb-3 font-bold text-[var(--tertiaryTextColor)] line-clamp-2 hover:underline">
+                    <Link href={'/'} className="">
+                      How to have fantastic trip without blowing your budget of
+                    </Link>
+                  </div>
+                  <div className="flex items-center">
+                    <div className="flex text-[var(--tertiaryTextColor)]">
+                      <i className="bi bi-calendar mr-2"></i>
+                      <div className="text-[var(--tertiaryTextColor)] font-semibold text-[12px]">
                         DECEMBER 9, 2021
                       </div>
                     </div>
