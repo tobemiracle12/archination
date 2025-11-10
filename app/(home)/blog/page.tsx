@@ -17,14 +17,14 @@ import {
 } from 'lucide-react'
 import FeatureHomes from '@/components/Public/FeatureHomes'
 import HeroSearchBar from '@/components/Public/HeroSearchBar'
-export default function Contact() {
+export default function Blog() {
   return (
     <div>
       {/* ///////MAIN BLOG SECTION//////////// */}
-      <div className="flex py-[75px] justify-center bg-[var(--widgetBackground)]">
+      <div className="flex md:py-[75px] py-[10px] justify-center bg-[var(--widgetBackground)]">
         <div className="customContainer">
-          <div className="flex w-full gap-3">
-            <div className="text w-2/3 min-h-[80vh] relative rounded-[5px] overflow-hidden">
+          <div className="grid lg:grid-cols-3 grid-cols-1 w-full gap-3">
+            <div className="text col-span-2 min-h-[50vh] relative rounded-[5px] overflow-hidden">
               <Image
                 src="/Feature1.jpg"
                 sizes="100vw"
@@ -34,7 +34,7 @@ export default function Contact() {
                 alt="real"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent z-0"></div>
-              <div className="flex flex-col absolute bottom-0 items-start p-12">
+              <div className="flex flex-col absolute bottom-0 items-start md:p-12 p-[20px]">
                 <Link
                   href={'/'}
                   className="px-[7px] py-[2px] z-10  bg-[var(--customTextColor)] text-white text-[12px] mb-2"
@@ -43,7 +43,7 @@ export default function Contact() {
                 </Link>
                 <Link
                   href={'/'}
-                  className="z-10 text-white text-[30px] mb-2 font-bold"
+                  className="z-10 text-white md:text-[35px] text-[20px] mb-2 font-bold md:leading-[40px] leading-8"
                 >
                   African Nation Are Strugling To Save Their Wildlife
                 </Link>
@@ -62,7 +62,7 @@ export default function Contact() {
                 </div>
               </div>
             </div>
-            <div className="flex-1">
+            <div className="flex flex-col">
               <div className="relative mb-3 rounded-[5px] overflow-hidden">
                 <Image
                   src="/Feature1.jpg"
@@ -184,7 +184,7 @@ export default function Contact() {
           </div>
         </div>
       </div>
-      <div className="flex py-[75px] justify-center bg-white">
+      <div className="flex md:py-[75px] py-[50px] justify-center bg-white">
         <div className="customContainer">
           <div className="w-full rounded-md shadow-lg py-3 mb-10">
             <form className="grid grid-cols-2 text-[var(--tertiaryTextColor)] md:grid-cols-4 p-5 rounded-[5px] bg-white w-full">
@@ -208,7 +208,7 @@ export default function Contact() {
           <div className="text-[var(--tertiaryTextColor)] font-bold text-[30px] mb-3">
             Top Stories
           </div>
-          <div className="grid grid-cols-4 gap-5">
+          <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-5">
             <div className="flex flex-col">
               <div className="text relative mb-4">
                 <Link
@@ -393,7 +393,7 @@ export default function Contact() {
         </div>
       </div>
 
-      <div className="flex justify-center bg-[url('/blogImage1.jpg')] bg-fixed bg-cover bg-no-repeat bg-center">
+      {/* <div className="flex justify-center bg-[url('/blogImage1.jpg')] bg-fixed bg-cover bg-no-repeat bg-center">
         <div className="flex w-full bg-black/50 justify-center">
           <div className="customContainer">
             <div className="flex flex-col min-h-[80vh]">
@@ -718,7 +718,7 @@ export default function Contact() {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

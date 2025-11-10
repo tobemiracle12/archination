@@ -28,8 +28,8 @@ export default function PublicFooter() {
             />
           </Link>
         </div>
-        <div className="grid grid-cols-3 text-white">
-          <div className="t">
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 text-white">
+          <div className="t md:mb-0 mb-[40px]">
             <div className="font-bold text-lg mb-5">Quick Links</div>
             <div className="grid grid-cols-2">
               <ul className="m-0 p-0">
@@ -73,7 +73,7 @@ export default function PublicFooter() {
               </ul>
             </div>
           </div>
-          <div className="t">
+          <div className="t md:mb-0 mb-[35px]">
             <div className="font-bold text-lg mb-5">Contacts</div>
             <ul className="m-0 p-0">
               <li className="mb-3 flex">

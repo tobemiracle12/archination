@@ -19,6 +19,7 @@
   --customLightColor: #6AEC41;
   --primary-text-color: #4a5565;
   --secondary-text-color: #1e2939;
+  --borderColor: #c5cbd8;
    /* --foreground: #1a1a1c; */
 }
 
@@ -48,6 +49,7 @@ body {
 }
 
 
+
 /* --------------DASHBOARD STYLES-------------- */
 .dashboardHeaderCircles {
   @apply w-10 h-10 bg-[var(--cardBackground)] rounded-full flex justify-center items-center mr-3 last:mr-0 cursor-pointer
@@ -63,6 +65,10 @@ body {
 
 .customContainer {
   @apply max-w-[1300px] w-full px-2 sm:px-3;
+}
+
+.customInput {
+  @apply p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)] flex justify-between
 }
 
 .customHomeInput{
@@ -105,4 +111,46 @@ body {
     padding-bottom: 50px;
 }
 
+/* Style navigation arrows */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50% !important;
+  background: white !important;
+  color: black !important;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
+  transition: all 0.3s ease-in-out;
+  opacity: 0.9;
+  z-index: 100;
+
+}
+/* Hover effect */
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: black !important;
+  color: white !important;
+  opacity: 1;
+}
+
+/* Style arrow icons (default arrows) */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 8px !important;
+  font-weight: bold;
+}
+
+.swiper-button-prev, .swiper-button-next {
+    svg {
+        width: 20px;
+        height: 20px;
+        object-fit: contain;
+        transform-origin: center;
+        fill: currentColor;
+        pointer-events: none;
+    }
+}
 

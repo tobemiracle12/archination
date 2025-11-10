@@ -52,21 +52,21 @@ export default function Design() {
       <Hero />
 
       {/* ///////BLOG1 GALLERY SECTION//////////// */}
-      <div className="flex justify center bg-[var(--secondaryBackground)] py-[75px] pl-35">
+      <div className="flex justify-center bg-[var(--secondaryBackground)] py-[75px]">
         <div className="customContainer">
           <div className="flex flex-col">
             <div className="flex flex-col text-center">
-              <div className="text-[30px] text-black font-bold mb-3">
+              <div className="md:text-[30px] text-[25px] text-black font-bold mb-2">
                 Design Gallery
               </div>
               <div className="t">
                 <hr className="border-t-2 border-b-green-300 w-[100px] mx-auto mt-3 mb-4" />
               </div>
-              <div className="text mb-12">
+              <div className="text md:mb-12 mb-8">
                 Check out some of our latest properties.
               </div>
             </div>
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-3 grid-cols-1 gap-4">
               <div className="flex overflow-hidden bg-white shadow-lg flex-col rounded-[6px]">
                 <div className="flex relative w-full">
                   <div className="flex w-full absolute z-10 bottom-0 left-0 p-3">
@@ -98,7 +98,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"
@@ -136,7 +136,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"
@@ -174,7 +174,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"
@@ -212,7 +212,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"
@@ -250,7 +250,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"
@@ -288,7 +288,7 @@ export default function Design() {
                   <Image
                     src="/Feature1.jpg"
                     sizes="100vw"
-                    className="h-[400px] w-full object-cover"
+                    className="h-[300px] w-full object-cover"
                     width={0}
                     height={0}
                     alt="real"

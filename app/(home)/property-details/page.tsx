@@ -14,7 +14,7 @@ function PropertyDetails() {
       <div className="flex  justify-center bg-[url('/blogImage1.jpg')] bg-fixed bg-cover bg-no-repeat bg-center">
         <div className="flex w-full bg-green-500/40 py-[100px] justify-center">
           <div className="customContainer">
-            <div className="flex text-white text-[40px]">
+            <div className="flex text-white md:text-[40px] text-[30px]">
               Home in Merrick Way
             </div>
           </div>
@@ -23,17 +23,17 @@ function PropertyDetails() {
       <div className=" flex justify-center bg-[var(--secondaryBackground)] py-[75px]">
         <div className="customContainer">
           <div className="flex flex-col">
-            <div className="grid grid-cols-2 mb-10">
+            <div className="grid md:grid-cols-2 grid-cols-1 md:mb-10 mb-7">
               <div className="flex flex-col">
                 <div className="text-[20px] text-black font-semibold mb-2">
                   Home in Merrick Way
                 </div>
-                <div className="text-[16px] text-[var(--primaryTextColor)]">
+                <div className="text-[16px] text-[var(--primaryTextColor)] mb-3">
                   Merrick Way, Miami, FL 33134, USA
                 </div>
               </div>
-              <div className="flex justify-end">
-                <div className="border-l border-l-gray-400 mr-5"></div>
+              <div className="flex md:justify-end items-start">
+                <div className="md:border-l border-l-gray-400 md:mr-5 mr-0"></div>
                 <div className="flex flex-col leading-8">
                   <div className="text-[var(--secondaryTextColor)]">
                     For Sale
@@ -44,7 +44,7 @@ function PropertyDetails() {
                 </div>
               </div>
             </div>
-            <div className="relative w-full min-h-[75vh] rounded-[5px] overflow-hidden mb-20">
+            <div className="relative w-full md:min-h-[75vh] min-h-[40vh] rounded-[5px] overflow-hidden md:mb-20">
               <Swiper
                 modules={[EffectFade, Autoplay, Navigation]}
                 navigation
@@ -101,10 +101,10 @@ function PropertyDetails() {
               </Swiper>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-7">
-            <div className="flex flex-col col-span-2  bg-white shadow px-[25px] py-[15px]">
-              <div className="flex justify-between w-full mb-6">
-                <div className="flex items-center ">
+          <div className="grid md:grid-cols-3 grid-cols-1 gap-7 items-start">
+            <div className="flex flex-col lg:col-span-2  bg-white shadow md:px-[25px] px-[14px] py-[15px] mb-12">
+              <div className="flex justify-between w-full mb-6 flex-wrap">
+                <div className="flex items-center mb-3">
                   <div className="text-[15px] text-[var(--secondaryTextColor)] mr-1">
                     Property ID:
                   </div>
@@ -116,7 +116,7 @@ function PropertyDetails() {
                   </div>
                 </div>
                 <div className="flex text-center items-center">
-                  <div className="text-[30px] text-[var(--primaryTextColor)] relative">
+                  <div className="md:text-[30px] text-[18px] text-[var(--primaryTextColor)] relative">
                     <div className="relative group inline-block mr-6">
                       <i className="bi bi-share-fill"></i>
                       <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -125,13 +125,13 @@ function PropertyDetails() {
                     </div>
                   </div>
                   <div className="relative group inline-block mr-6">
-                    <Heart className="w-7 h-7 cursor-pointer text-[var(--primaryTextColor)]" />
+                    <Heart className="w-7 h-7 cursor-pointer text-[var(--primaryTextColor)] text-[10px]" />
                     <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       Add to Favorites
                     </div>
                   </div>
 
-                  <div className="text-[30px] text-[var(--primaryTextColor)] relative">
+                  <div className="md:text-[30px] text-[18px] text-[var(--primaryTextColor)] relative">
                     <div className="relative group inline-block mr-6">
                       <i className="bi bi-arrow-left-right"></i>
                       <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -139,7 +139,7 @@ function PropertyDetails() {
                       </div>
                     </div>
                   </div>
-                  <div className="text-[30px] text-[var(--primaryTextColor)] relative">
+                  <div className="md:text-[30px] text-[18px] text-[var(--primaryTextColor)] relative">
                     <div className="relative group inline-block">
                       <i className="bi bi-printer"></i>
                       <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -242,7 +242,7 @@ function PropertyDetails() {
                     demo
                   </Link>
                 </div>
-                <div className="flex items-center mr-4">
+                <div className="flex items-center">
                   <Link href={'/'}>
                     <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
                   </Link>
@@ -296,10 +296,6 @@ function PropertyDetails() {
                 <div className="text-black"> 1-234-456-7892</div>
               </div>
               <div className="flex mb-2">
-                <div className="text mr-1">Fax:</div>
-                <div className="text-black">1-333-444-5555</div>
-              </div>
-              <div className="flex mb-2">
                 <div className="text mr-1">WhatsApp:</div>
                 <div className="text-black"> 1-222-333-4422</div>
               </div>
@@ -332,7 +328,7 @@ function PropertyDetails() {
                 <Image
                   src="/propertyImage5.jpg"
                   sizes="100vw"
-                  className="h-full w-full  object-cover"
+                  className="md:h-full h-[200px] md:w-full w-[320px] object-cover"
                   width={0}
                   height={0}
                   alt="real"

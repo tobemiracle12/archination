@@ -7,9 +7,10 @@ export default function DashboardRootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <div className="flex bg-background min-h-screen">
+    <div className="flex ">
       <DashboardSidebar />
-      <div className="flex-1 overflow-y-auto">
+
+      <div className="flex-1 overflow-y-auto h-[100vh]">
         <DashboardHeader />
         <div className="p-4 rounded">{children} </div>
       </div>

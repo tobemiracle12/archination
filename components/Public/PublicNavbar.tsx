@@ -20,7 +20,7 @@ export default function PublicNavbar() {
   }
 
   return (
-    <nav className="bg-[var(--custom-text-color)] text-white flex justify-center">
+    <nav className="md:bg-[var(--custom-text-color)]  md:text-white text-[var(--tertiaryTextColor)] flex justify-center bg-[var(--custom-text-color)]">
       <div className="custom-container">
         <div
           onClick={closeNave}
@@ -28,7 +28,7 @@ export default function PublicNavbar() {
             vNav ? 'left-0' : 'left-[-1000px] md:left-0'
           } md:relative fixed  top-0 h-full bg-black/65 md:bg-transparent w-full z-50`}
         >
-          <ul className="md:flex md:w-full  w-[300px] bg-[var(--background)] md:bg-[var(--custom-text-color)] h-full">
+          <ul className="md:flex md:w-full  w-[300px] bg-white md:bg-[var(--custom-text-color)] h-full">
             <li className="md:hidden pt-4 px-3 mb-5">
               <Link href="/" className="sm:w-40 w-32 max-w-40">
                 <Image
@@ -48,7 +48,7 @@ export default function PublicNavbar() {
                 className={`navLinks ${
                   pathName === '/' ? 'bg-[var(--custom-light-color)]' : ''
                 }`}
-                href={`/`}
+                href={`/home`}
               >
                 Home
               </Link>
@@ -72,9 +72,9 @@ export default function PublicNavbar() {
                     ? 'bg-[var(--custom-light-color)]'
                     : ''
                 }`}
-                href={`/properties`}
+                href={`/map`}
               >
-                Properties
+                Map
               </Link>
             </li>
             <li>
@@ -143,7 +143,9 @@ export default function PublicNavbar() {
           <li className="ml-auto">
             <Link
               className={`navLinks ${
-                pathName === '/sign-up' ? 'bg-[var(--custom-light-color)]' : ''
+                pathName === '/sign-up'
+                  ? 'bg-[var(--custom-light-color)]'
+                  : 'text-white'
               }`}
               href={`/sign-up`}
             >
@@ -152,7 +154,7 @@ export default function PublicNavbar() {
           </li>
           <li>
             <Link
-              className={`navLinks bg-[var(--custom-light-color)]`}
+              className={`navLinks bg-[var(--custom-light-color)] text-white`}
               href={`/sign-in`}
             >
               Sign In

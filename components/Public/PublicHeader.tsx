@@ -7,7 +7,7 @@ import { NavStore } from '@/src/appInfoStore'
 export default function PublicHeader() {
   const { toggleVNav } = NavStore()
   return (
-    <header className="bg-white text-[var(--tertiaryTextColor)] py-2 flex justify-center">
+    <header className="md:bg-white bg-white text-[var(--tertiaryTextColor)] py-2 flex justify-center">
       <div className="custom-container">
         <div className="flex justify-between w-full items-center">
           <Link href="/" className="sm:w-40 w-32 max-w-40">

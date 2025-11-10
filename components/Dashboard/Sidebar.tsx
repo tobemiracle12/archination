@@ -11,10 +11,12 @@ import {
 import { FaGear } from 'react-icons/fa6'
 import { useTheme } from '@/context/ThemeContext'
 import { NavStore } from '@/src/appInfoStore'
+import { usePathname } from 'next/navigation'
 
 const DashboardSidebar = () => {
   const { theme } = useTheme()
   const { dashboardNav, clearDashboardNav } = NavStore()
+  const pathname = usePathname()
 
   const closeNave = (e: React.MouseEvent) => {
     e.stopPropagation()
@@ -26,10 +28,10 @@ const DashboardSidebar = () => {
       onClick={closeNave}
       className={`${
         dashboardNav ? 'left-0' : 'left-[-1000px] lg:left-0'
-      } duration-300 fixed top-0 lg:flex w-full z-30 lg:w-auto lg:relative bg-black/50 h-screen`}
+      } duration-300 fixed top-0 lg:flex w-full z-30 lg:w-auto lg:relative bg-black/50 sticky h-screen`}
     >
       <div
-        className={`w-64 bg-[var(--widgetBackground)] h-full flex flex-col justify-between`}
+        className={`w-64 bg-[var(--widgetBackground)] h-full flex flex-col justify-between sticky`}
       >
         <div>
           <div className="px-5 pt-3">
@@ -53,7 +55,7 @@ const DashboardSidebar = () => {
 
           <nav className="space-y-1 px-4">
             <div className="text-xs text-gray-400 mt-4">PLATFORM</div>
-            <NavItem label="Dashboard" link="" />
+            <NavItem label="Dashboard" link="" pathname="" />
             <NavItem label="Profile" link="profile" icon={<FaUser />} />
             <NavItem label="Products" icon={<FaBoxOpen />} />
             <NavItem label="Transactions" icon={<FaExchangeAlt />} />
@@ -63,7 +65,7 @@ const DashboardSidebar = () => {
             <NavItem label="Verification" />
             <NavItem label="Designer" />
             <NavItem label="Agent" />
-            <NavItem label="Seller" />
+            <NavItem label="Seller" link="/seller" pathname={pathname} />
 
             <div className="text-xs text-gray-400 mt-4">TOOLS</div>
             <NavItem label="Settings" icon={<FaGear />} />
@@ -96,14 +98,20 @@ const NavItem = ({
   label,
   link,
   icon,
+  pathname,
 }: {
   label: string
   link?: string
+  pathname?: string
   icon?: React.ReactNode
 }) => (
   <Link
     href={`/dashboard/${link}`}
-    className="flex items-center gap-2 py-2 px-3 hover:bg-[var(--customTextColor)] hover:text-white rounded cursor-pointer"
+    className={`${
+      pathname === `/dashboard${link}`
+        ? 'bg-[var(--customTextColor)] text-white'
+        : ''
+    } flex items-center gap-2 py-2 px-3 hover:bg-[var(--customTextColor)] hover:text-white rounded cursor-pointer`}
   >
     {icon && icon}
     <span>{label}</span>

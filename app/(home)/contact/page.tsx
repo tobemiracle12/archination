@@ -22,7 +22,7 @@ export default function Contact() {
     <div>
       {/* ///////CONTACT SECTION//////////// */}
       <div className="flex  justify-center bg-[url('/blogImage1.jpg')] bg-fixed bg-cover bg-no-repeat bg-center">
-        <div className="flex w-full bg-green-500/40 py-[100px] justify-center">
+        <div className="flex w-full bg-green-500/40 md:py-[100px] py-[75px] justify-center">
           <div className="customContainer">
             <div className="flex text-white text-[40px]">Contact</div>
           </div>
@@ -32,8 +32,8 @@ export default function Contact() {
       {/* ////CONTACT SECTION2 //// */}
       <div className="flex py-[60px] bg-[var(--widgetBackground)] justify-center">
         <div className="customContainer">
-          <div className="bg-white p-[40px]">
-            <div className="grid grid-cols-2 mb-10 w-full gap-9">
+          <div className="bg-white md:p-[40px] p-[25px]">
+            <div className="grid md:grid-cols-2 grid-cols-1 mb-10 w-full gap-9">
               <div className="flex flex-col items-start">
                 <div className="contactInput">
                   <label className="mb-1" htmlFor="">

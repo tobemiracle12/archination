@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import Hero from '@/components/Public/Hero'
 import Image from 'next/image'
-import { Navigation, Pagination } from 'swiper/modules'
+import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { CameraIcon } from '@heroicons/react/24/solid'
 import { BsCamera, BsCameraFill } from 'react-icons/bs'
@@ -73,10 +73,10 @@ export default function FeatureHomes() {
                   <div className="flex flex-col items-center">
                     <div className="flex relative">
                       <div className="flex absolute top-0 left-0 p-3">
-                        <div className="flex text-white bg-black/50 hover:bg-black cursor-pointer rounded-[5px] items-center py-[2px] px-1 mr-3">
+                        <div className="flex text-white bg-green-600 hover:bg-green-600/50  cursor-pointer rounded-[5px] items-center py-[2px] px-1 mr-3">
                           <BsCameraFill className="mr-1" /> 4
                         </div>
-                        <div className="flex text-white bg-black/50 hover:bg-black cursor-pointer rounded-[5px] items-center py-[2px] px-1">
+                        <div className="flex text-white  bg-green-600 hover:bg-green-600/50  cursor-pointer rounded-[5px] items-center py-[2px] px-1">
                           <VideoIcon className="mr-1" /> 1
                         </div>
                       </div>
@@ -89,7 +89,7 @@ export default function FeatureHomes() {
                         alt="real"
                       />
                     </div>
-                    <div className="bg-white shadow-lg rounded-[6px] py-[40px] px-[35px] max-w-[80%] -mt-[50px] z-30">
+                    <div className="bg-white shadow-lg rounded-[6px] py-[40px] md:px-[35px] px-[10px] md:max-w-[80%] max-w-[90%] -mt-[50px] z-30">
                       <div className="text-[25px] text-black font-semibold hover:text-green-500 transition duration-300 mb-2">
                         {' '}
                         <Link href={'/'} className="">
@@ -111,7 +111,7 @@ export default function FeatureHomes() {
                           June 15, 2020
                         </div>
                       </div>
-                      <div className="flex text-black mb-6">
+                      <div className="flex text-black mb-6 flex-wrap">
                         <div className="text-sm mr-7">
                           <div className="font-bold mb-2">Bedrooms</div>
                           <div className="flex ">
@@ -126,7 +126,7 @@ export default function FeatureHomes() {
                             3
                           </div>
                         </div>
-                        <div className="text-sm mr-7">
+                        <div className="text-sm">
                           <div className="font-bold mb-2">Area</div>
                           <div className="flex ">
                             <LandPlot className="text-[var(--primaryTextColor)] mr-3" />{' '}
@@ -137,8 +137,8 @@ export default function FeatureHomes() {
                           </div>
                         </div>
                       </div>
-                      <div className="flex items-center">
-                        <div className="flex flex-col mr-60">
+                      <div className="flex items-center justify-between">
+                        <div className="flex flex-col">
                           <div className="text-black text-[15px] font-bold">
                             For Sale
                           </div>
@@ -147,10 +147,10 @@ export default function FeatureHomes() {
                           </div>
                         </div>
                         <div className="flex text-center">
-                          <div className="text-[30px] text-[var(--tertiaryTextColor)] mr-3">
+                          <div className="text-[25px] text-[var(--tertiaryTextColor)] mr-3">
                             <i className="bi bi-suit-heart-fill"></i>
                           </div>
-                          <div className="text-[30px] text-[var(--tertiaryTextColor)]">
+                          <div className="text-[25px] text-[var(--tertiaryTextColor)]">
                             <i className="bi bi-arrow-left-right"></i>
                           </div>
                         </div>
