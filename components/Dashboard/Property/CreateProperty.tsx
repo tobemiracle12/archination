@@ -177,9 +177,7 @@ const CreateProperty: React.FC = () => {
     const value = e.target.value
 
     setDocument((prev) =>
-      prev
-        ? { ...prev, name: value }
-        : { name: value, source: '', file: null as any }
+      prev ? { ...prev, name: value } : { name: value, source: '', file: null }
     )
   }
 

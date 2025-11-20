@@ -13,7 +13,7 @@ interface FetchResponse {
 export interface PropertyDocument {
   name: string
   source: string
-  file: File
+  file: File | null
 }
 
 export interface Property {
