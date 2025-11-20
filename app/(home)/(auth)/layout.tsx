@@ -1,9 +1,4 @@
 import Image from 'next/image'
-import type { Metadata } from 'next'
-// export const metadata: Metadata = {
-//   title: 'Sign In | Archination',
-//   description: 'Sign in to your Archination account to continue.',
-// }
 
 export default function AuthLayout({
   children,
