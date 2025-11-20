@@ -11,7 +11,6 @@ interface SEOParams {
   applicationName?: string
   generator?: string
   category?: string
-  referrer?: string
 }
 
 export function generateMetadata({
@@ -25,7 +24,6 @@ export function generateMetadata({
   applicationName = 'Archination',
   generator = 'Next.js',
   category,
-  referrer = 'origin-when-cross-origin',
 }: SEOParams = {}): Metadata {
   return {
     title,

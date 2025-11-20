@@ -3,13 +3,6 @@ import Link from 'next/link'
 import Image from 'next/image'
 // import { FaMapMarkerAlt, FaPhoneAlt, FaClock } from 'react-icons/fa'
 
-import {
-  PhoneIcon,
-  EnvelopeIcon,
-  MapPinIcon,
-  ChevronUpIcon,
-} from '@heroicons/react/24/solid'
-
 export default function PublicFooter() {
   return (
     <div className="bg-[var(--customTextColor)] py-[70px] flex justify-center">

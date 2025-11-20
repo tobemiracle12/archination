@@ -1,19 +1,10 @@
 'use client'
 import Link from 'next/link'
-import Hero from '@/components/Public/Hero'
 import Image from 'next/image'
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { CameraIcon } from '@heroicons/react/24/solid'
-import { BsCamera, BsCameraFill } from 'react-icons/bs'
-import {
-  BathIcon,
-  BedDouble,
-  LandPlot,
-  ShowerHead,
-  ShowerHeadIcon,
-  VideoIcon,
-} from 'lucide-react'
+import { BsCameraFill } from 'react-icons/bs'
+import { BedDouble, LandPlot, ShowerHeadIcon, VideoIcon } from 'lucide-react'
 export default function FeatureHomes() {
   const testimonials = [
     {
