@@ -137,9 +137,15 @@ export default function SignInClient() {
           </Link>
         </div>
 
-        <button type="submit" className="homeButton">
-          Login
-        </button>
+        {loading ? (
+          <button type="button" className="homeButton">
+            Processing
+          </button>
+        ) : (
+          <button type="submit" className="homeButton">
+            Login
+          </button>
+        )}
         {generalError && (
           <div className="text-red-500 text-sm">{generalError}</div>
         )}
