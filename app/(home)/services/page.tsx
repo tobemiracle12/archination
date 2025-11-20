@@ -1,18 +1,10 @@
 'use client'
 import Link from 'next/link'
-import React, { useRef } from 'react'
+import React from 'react'
 import Image from 'next/image'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { EffectFade, Navigation, Pagination } from 'swiper/modules'
+
 import 'swiper/css'
-import { Autoplay } from 'swiper/modules'
-import {
-  BedDouble,
-  Heart,
-  LandPlot,
-  ShowerHead,
-  ShowerHeadIcon,
-} from 'lucide-react'
+import { BedDouble, LandPlot, ShowerHead } from 'lucide-react'
 
 function Services() {
   return (

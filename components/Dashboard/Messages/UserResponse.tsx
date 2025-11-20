@@ -1,6 +1,6 @@
 'use client'
 import { MessageStore } from '@/src/zustand/Message'
-import { motion, AnimatePresence } from 'framer-motion'
+import { AnimatePresence } from 'framer-motion'
 
 export default function UserResponse() {
   const { clearMessage, message, isSuccess } = MessageStore()

@@ -1,52 +1,10 @@
 'use client'
-import Link from 'next/link'
 import Hero from '@/components/Public/Hero'
 import Image from 'next/image'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { CameraIcon } from '@heroicons/react/24/solid'
-import { BsCamera, BsCameraFill } from 'react-icons/bs'
-import {
-  BathIcon,
-  BedDouble,
-  Heart,
-  LandPlot,
-  ShowerHead,
-  ShowerHeadIcon,
-  VideoIcon,
-} from 'lucide-react'
-import FeatureHomes from '@/components/Public/FeatureHomes'
+import { BsCameraFill } from 'react-icons/bs'
+import { VideoIcon } from 'lucide-react'
+
 export default function Design() {
-  const testimonials = [
-    {
-      picture: '/TestiImage1.jpg',
-      content:
-        'This is the best place to buy and sell anything real estate related and you get it at one piece. They are so sincere.',
-      name: 'Liza Bryan',
-      position: 'Real Estate Owner',
-    },
-    {
-      picture: '/TestiImage2.jpg',
-      content:
-        'This is the best place to buy and sell anything real estate related and you get it at one piece. They are so sincere.',
-      name: 'Liza Bryan',
-      position: 'Real Estate Owner',
-    },
-    {
-      picture: '/TestiImage3.jpg',
-      content:
-        'This is the best place to buy and sell anything real estate related and you get it at one piece. They are so sincere.',
-      name: 'Liza Bryan',
-      position: 'Real Estate Owner',
-    },
-    {
-      picture: '/TestiImage3.jpg',
-      content:
-        'This is the best place to buy and sell anything real estate related and you get it at one piece. They are so sincere.',
-      name: 'Liza Bryan',
-      position: 'Real Estate Owner',
-    },
-  ]
   return (
     <div>
       <Hero />

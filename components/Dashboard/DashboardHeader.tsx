@@ -9,7 +9,7 @@ import { NavStore } from '@/src/appInfoStore'
 const DashboardHeader = () => {
   const { user } = useAuthStore()
   const { theme, toggleTheme } = useTheme()
-  const { dashboardNav, toggleDashboardNav } = NavStore()
+  const { toggleDashboardNav } = NavStore()
 
   const router = useRouter()
   const logout = () => {
