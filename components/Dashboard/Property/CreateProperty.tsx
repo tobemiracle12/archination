@@ -1,11 +1,18 @@
 'use client'
 import Link from 'next/link'
-import { appendForm } from '@/lib/helpers'
+import { appendForm, getLocation } from '@/lib/helpers'
 import { useState, useEffect } from 'react'
 import { useParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
-import PropertyStore from '@/src/zustand/Property'
+import PropertyStore, { PropertyDocument } from '@/src/zustand/Property'
 import { MessageStore } from '@/src/zustand/Message'
+import { validateInputArray } from '@/lib/validateInputArray'
+import MapBox from '@/components/Map'
+
+type Coordinates = {
+  lat: number
+  lng: number
+}
 
 const CreateProperty: React.FC = () => {
   const {
@@ -18,8 +25,9 @@ const CreateProperty: React.FC = () => {
     loading,
     properties,
   } = PropertyStore()
-  const url = '/products'
+  const url = '/properties'
   const [name, setName] = useState('')
+  const [document, setDocument] = useState<PropertyDocument | null>(null)
   const { setMessage } = MessageStore()
   const [currentPage] = useState(1)
   const [page_size] = useState(20)
@@ -52,10 +60,44 @@ const CreateProperty: React.FC = () => {
     }
   }, [id])
 
+  const handleGetLocation = async () => {
+    try {
+      const res: Coordinates = await getLocation()
+      PropertyStore.setState((prev) => {
+        return {
+          propertyForm: { ...prev.propertyForm, lat: res.lat, lng: res.lng },
+        }
+      })
+      setMessage('The coordinate has been set', true)
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  const setPropertyType = (param: string) => {
+    PropertyStore.setState((prev) => {
+      return {
+        propertyForm: { ...prev.propertyForm, propertyType: param },
+      }
+    })
+    setShowList(false)
+  }
+
+  const addDocument = () => {
+    if (!document) return
+    PropertyStore.setState((prev) => {
+      return {
+        propertyForm: {
+          ...prev.propertyForm,
+          documents: [...prev.propertyForm.documents, document],
+        },
+      }
+    })
+  }
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (!files) return
-
     const fileArray = Array.from(files)
 
     const previewFiles = fileArray.map((file) => {
@@ -79,6 +121,16 @@ const CreateProperty: React.FC = () => {
         },
       }
     })
+  }
+
+  const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files
+    if (!files) return
+    const file = files[0]
+
+    setDocument((prev) =>
+      prev ? { ...prev, file: file } : { file: file, source: '', name }
+    )
   }
 
   const handleRemovePicture = (index: number) => {
@@ -120,64 +172,101 @@ const CreateProperty: React.FC = () => {
     setForm(name as keyof typeof propertyForm, value)
   }
 
+  const setDocumentName = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const value = e.target.value
+
+    setDocument((prev) =>
+      prev
+        ? { ...prev, name: value }
+        : { name: value, source: '', file: null as any }
+    )
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     const inputsToValidate = [
       {
         name: 'name',
         value: propertyForm.name,
-        rules: { blank: true, maxLength: 100 },
+        rules: { blank: true, minLength: 10, maxLength: 100 },
         field: 'Name field',
       },
       {
-        name: 'costPrice',
-        value: propertyForm.costPrice,
-        rules: { blank: true, maxLength: 100 },
-        field: 'Cost price field',
+        name: 'address',
+        value: propertyForm.address,
+        rules: { blank: true, minLength: 10, maxLength: 100 },
+        field: 'address field',
       },
       {
         name: 'price',
-        value: propertyForm.price,
-        rules: { blank: true, maxLength: 100 },
+        value: String(propertyForm.price),
+        rules: { blank: true, minLength: 6, maxLength: 100 },
         field: 'Price field',
       },
       {
-        name: 'unitPerPurchase',
-        value: propertyForm.unitPerPurchase,
+        name: 'bedrooms',
+        value: String(propertyForm.bedrooms),
         rules: { blank: false, maxLength: 100 },
-        field: 'Unit field',
+        field: 'bedroom field',
       },
       {
-        name: 'purchaseUnit',
-        value: propertyForm.purchaseUnit,
+        name: 'bathrooms',
+        value: String(propertyForm.bathrooms),
         rules: { blank: true, maxLength: 100 },
         field: 'Purchase Unit field',
       },
       {
-        name: 'seoTitle',
-        value: propertyForm.seoTitle,
+        name: 'area',
+        value: String(propertyForm.area),
         rules: { blank: false, maxLength: 100 },
         field: 'SEO title field',
       },
       {
-        name: 'picture',
-        value: propertyForm.picture,
-        rules: { blank: false, maxLength: 1000 },
+        name: 'pictures',
+        value: JSON.stringify(propertyForm.pictures),
+        rules: { blank: false, minLength: 4, maxLength: 1000 },
         field: 'Picture field',
       },
-      {
-        name: 'isBuyable',
-        value: propertyForm.isBuyable,
-        rules: { blank: false, maxLength: 1000 },
-        field: 'Picture field',
-      },
+
       {
         name: 'description',
         value: propertyForm.description,
-        rules: { blank: false, maxSize: 5000 },
+        rules: { blank: false, minLength: 100, maxLength: 2000 },
         field: 'Description file',
       },
+      {
+        name: 'features',
+        value: JSON.stringify(propertyForm.features),
+        rules: { blank: false, maxLength: 2000 },
+        field: 'Features file',
+      },
+      {
+        name: 'documents',
+        value: JSON.stringify(propertyForm.documents),
+        rules: { blank: false, minLength: 1, maxLength: 10 },
+        field: 'Documents file',
+      },
+      {
+        name: 'lng',
+        value: String(propertyForm.lng),
+        rules: { blank: false, maxLength: 5000 },
+        field: 'Long file',
+      },
+      {
+        name: 'lat',
+        value: String(propertyForm.lat),
+        rules: { blank: false, maxLength: 5000 },
+        field: 'Lat file',
+      },
+      {
+        name: 'propertyType',
+        value: propertyForm.propertyType,
+        rules: { blank: false, maxLength: 5000 },
+        field: 'PropertyType file',
+      },
     ]
-    const { messages } = validateInputs(inputsToValidate)
+    const { messages } = validateInputArray(inputsToValidate)
     const getFirstNonEmptyMessage = (
       messages: Record<string, string>
     ): string | null => {
@@ -198,13 +287,9 @@ const CreateProperty: React.FC = () => {
     e.preventDefault()
     const data = appendForm(inputsToValidate)
     if (id) {
-      updateProperty(`${url}/${id}${queryParams}`, data, setMessage, () =>
-        router.push(`/admin/products`)
-      )
+      updateProperty(`${url}/${id}${queryParams}`, data, setMessage)
     } else {
-      postProperty(`${url}${queryParams}`, data, setMessage, () =>
-        router.push(`/admin/products`)
-      )
+      postProperty(`${url}${queryParams}`, data, setMessage)
     }
   }
 
@@ -213,21 +298,26 @@ const CreateProperty: React.FC = () => {
       <div className="text">
         <div className="grid grid-cols-2 gap-5">
           <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
-            <Image
-              src="/propertyImage0.jpg"
-              sizes="100vw"
-              className="h-[300px] w-full object-cover mb-5"
-              width={0}
-              height={0}
-              alt="real"
-            />
+            {preview && (
+              <Image
+                src={preview}
+                sizes="100vw"
+                className="h-[300px] w-full object-cover mb-5"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            )}
             {propertyForm.pictures.length > 0 && (
               <div className="grid grid-cols-4 gap-3 mb-6 w-full">
                 {PropertyStore.getState().propertyForm.pictures.map(
                   (pic, index) => (
                     <div
+                      onClick={() =>
+                        setPreview(typeof pic === 'string' ? pic : pic.preview)
+                      }
                       key={index}
-                      className="relative w-full h-[100px] rounded overflow-hidden"
+                      className="relative w-full cursor-pointer h-[100px] rounded overflow-hidden"
                     >
                       <Image
                         src={typeof pic === 'string' ? pic : pic.preview}
@@ -237,10 +327,12 @@ const CreateProperty: React.FC = () => {
                         height={100}
                         alt={`property-${index}`}
                       />
-                      <i
-                        className="bi bi-trash3 absolute bottom-2 right-2 bg-black/50 hover:bg-black text-white cursor-pointer rounded-full p-1 text-[16px] transition-all"
-                        onClick={() => handleRemovePicture(index)}
-                      ></i>
+                      <div className="text-[12px] rounded-full flex justify-center items-center-safe transition-all absolute bottom-2 right-2 bg-black/50 hover:bg-black text-white cursor-pointer w-[22px] h-[22px]">
+                        <i
+                          className="bi bi-trash3"
+                          onClick={() => handleRemovePicture(index)}
+                        ></i>
+                      </div>
                     </div>
                   )
                 )}
@@ -249,7 +341,7 @@ const CreateProperty: React.FC = () => {
 
             <label htmlFor="picture" className="homeButton mb-5">
               <input
-                className="input-file"
+                className="absolute opacity-0"
                 type="file"
                 id="picture"
                 accept="image/*"
@@ -259,75 +351,94 @@ const CreateProperty: React.FC = () => {
               <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
               Pictures
             </label>
-            <div className="flex mb-5">
-              <Link href={'/'} className="flex items-center mr-4 relative">
-                <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
-                <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
-                <div className="text-[20px] text-[var(--primaryTextColor)]">
-                  demo
-                </div>
-              </Link>
-              <Link href={'/'} className="flex items-center mr-4 relative">
-                <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
-                <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
-                <div className="text-[20px] text-[var(--primaryTextColor)]">
-                  demo
-                </div>
-              </Link>
-              <Link href={'/'} className="flex items-center mr-4 relative">
-                <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
-                <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
-                <div className="text-[20px] text-[var(--primaryTextColor)]">
-                  demo
-                </div>
-              </Link>
+            <div className="flex flex-wrap">
+              {propertyForm.documents.map((item, index) => (
+                <Link
+                  key={index}
+                  href={'/'}
+                  className="flex items-center mr-4 relative mb-4"
+                >
+                  <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
+                  <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
+                  <div className="text-[20px] text-[var(--primaryTextColor)]">
+                    {item.name}
+                  </div>
+                </Link>
+              ))}
             </div>
             <div className="grid grid-cols-2 gap-3 w-full">
               <div className="contactInput">
                 <label className="mb-1" htmlFor="">
-                  Select Property Type
+                  Document Name
                 </label>
-                <div className="text relative">
-                  <div
-                    onClick={() => setShowList(!showList)}
-                    className="flex mb-3 customInput cursor-pointer"
-                  >
-                    <div className="text-[15px] mr-4">Property Type</div>
-                    <i className="bi bi-caret-down-fill"></i>
-                  </div>
-                  {showList && (
-                    <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px]">
-                      {propertyType.map((item, index) => (
-                        <div
-                          key={index}
-                          className="text p-3 border-b border-b-[var(--borderColor)]"
-                        >
-                          {item}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                <input
+                  type="text"
+                  value={document?.name}
+                  onChange={setDocumentName}
+                  placeholder="Enter Property Name"
+                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                />
               </div>
-              <div className="contactInput">
-                <label className="mb-1" htmlFor="">
-                  Upload Property Documents
-                </label>
-                <div className="text-white py-3 px-3 bg-[var(--customTextDarkColor)] hover:bg-green-700 tansition transition duration-300 rounded-[5px] mb-10 text-center">
-                  Upload
+              <div className="flex items-center gap-3">
+                <div className="contactInput">
+                  <label className="mb-1" htmlFor="">
+                    Upload Property Documents
+                  </label>
+                  <label htmlFor="doc" className="homeButton">
+                    <input
+                      className="absolute opacity-0"
+                      type="file"
+                      id="doc"
+                      accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.ppt,.pptx"
+                      multiple
+                      onChange={handleDocumentChange}
+                    />
+                    <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
+                    Pictures
+                  </label>
+                </div>
+                <div onClick={addDocument} className="homeButtonSm">
+                  Add
                 </div>
               </div>
             </div>
-            <div className="border w-full h-[300px]">
-              <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d254106.01784629122!2d7.09168786206372!3d5.654186360056148!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x10428e19657129ff%3A0x9431a596167553d9!2sImo!5e0!3m2!1sen!2sng!4v1759995760046!5m2!1sen!2sng"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              ></iframe>
+
+            <div className="contactInput">
+              <label className="mb-1" htmlFor="">
+                Select Property Type
+              </label>
+              <div className="text relative">
+                <div
+                  onClick={() => setShowList(!showList)}
+                  className="flex mb-3 customInput cursor-pointer"
+                >
+                  <div className="text-[15px] mr-4">
+                    {propertyForm.propertyType
+                      ? propertyForm.propertyType
+                      : 'Property Type'}
+                  </div>
+                  <i className="bi bi-caret-down-fill"></i>
+                </div>
+                {showList && (
+                  <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px] bg-[var(--background)]">
+                    {propertyType.map((item, index) => (
+                      <div
+                        onClick={() => setPropertyType(item)}
+                        key={index}
+                        className="text p-3 border-b border-b-[var(--borderColor)]"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            </div>
+            {propertyForm.lat && propertyForm.lng && (
+              <MapBox lat={propertyForm.lat} lng={propertyForm.lng} />
+            )}
+            <div onClick={handleGetLocation} className="homeButton">
+              Set Location
             </div>
           </div>
           <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">

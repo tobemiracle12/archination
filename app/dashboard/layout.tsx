@@ -1,4 +1,5 @@
 import DashboardHeader from '@/components/Dashboard/DashboardHeader'
+import UserResponse from '@/components/Dashboard/Messages/UserResponse'
 import DashboardSidebar from '@/components/Dashboard/Sidebar'
 
 export default function DashboardRootLayout({
@@ -9,6 +10,8 @@ export default function DashboardRootLayout({
   return (
     <div className="flex ">
       <DashboardSidebar />
+
+      <UserResponse />
 
       <div className="flex-1 overflow-y-auto h-[100vh]">
         <DashboardHeader />

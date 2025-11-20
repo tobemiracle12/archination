@@ -78,6 +78,9 @@ body {
 .homeButton{
   @apply w-full text-center cursor-pointer rounded-md bg-[var(--customTextColor)] py-2 text-white hover:bg-[var(--customTextDarkColor)]
 }
+.homeButtonSm{
+  @apply  text-center px-3 cursor-pointer rounded-md bg-[var(--customTextColor)] py-2 text-white hover:bg-[var(--customTextDarkColor)]
+}
 
 .homeInputLabel{
   @apply block text-sm font-medium text-[var(--secondary-text-color)]

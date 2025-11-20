@@ -10,6 +10,12 @@ interface FetchResponse {
   data: Property
 }
 
+export interface PropertyDocument {
+  name: string
+  source: string
+  file: File
+}
+
 export interface Property {
   _id: string
   name: string
@@ -20,11 +26,11 @@ export interface Property {
   area: number
   features: string[]
   description: string
-  documents: string[]
+  documents: PropertyDocument[]
   pictures: (string | PreviewFile)[]
-  long: number
+  lng: number
   lat: number
-  propertyType: string[]
+  propertyType: string
   createdAt: Date | null | number
   isChecked?: boolean
   isActive?: boolean
@@ -42,9 +48,9 @@ export const PropertyEmpty = {
   description: '',
   documents: [],
   pictures: [],
-  long: 0,
+  lng: 0,
   lat: 0,
-  propertyType: [],
+  propertyType: '',
   createdAt: 0,
 }
 
