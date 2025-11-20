@@ -2,7 +2,7 @@
 import Link from 'next/link'
 import { appendForm, getLocation } from '@/lib/helpers'
 import { useState, useEffect } from 'react'
-import { useParams, useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
 import Image from 'next/image'
 import PropertyStore, { PropertyDocument } from '@/src/zustand/Property'
 import { MessageStore } from '@/src/zustand/Message'
@@ -22,7 +22,7 @@ const CreateProperty: React.FC = () => {
     postProperty,
     updateProperty,
     propertyForm,
-    loading,
+
     properties,
   } = PropertyStore()
   const url = '/properties'
@@ -34,7 +34,6 @@ const CreateProperty: React.FC = () => {
   const [sort] = useState('-createdAt')
   const [feature, setFeature] = useState('')
   const { id } = useParams()
-  const router = useRouter()
   const [preview, setPreview] = useState<string | null>(null)
   const [queryParams] = useState(
     `?page_size=${page_size}&page=${currentPage}&ordering=${sort}`
