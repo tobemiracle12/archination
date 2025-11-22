@@ -32,9 +32,9 @@ const MapBox: React.FC<MapBoxProps> = ({ lat, lng }) => {
 
   return (
     <div
-      className="mb-5"
+      className="mb-5 md:h-[400px] h-[300px]"
       ref={mapContainer}
-      style={{ height: '400px', width: '100%' }}
+      style={{ width: '100%' }}
     />
   )
 }

@@ -20,7 +20,7 @@ export default function PublicNavbar() {
   }
 
   return (
-    <nav className="md:bg-[var(--custom-text-color)]  md:text-white text-[var(--tertiaryTextColor)] flex justify-center bg-[var(--custom-text-color)]">
+    <nav className="md:bg-[var(--custom-text-color)]  md:text-white text-[var(--tertiaryTextColor)] md:flex justify-center bg-[var(--custom-text-color)] hidden">
       <div className="custom-container">
         <div
           onClick={closeNave}
@@ -75,18 +75,6 @@ export default function PublicNavbar() {
                 href={`/map`}
               >
                 Map
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/services'
-                    ? 'bg-[var(--custom-light-color)]'
-                    : ''
-                }`}
-                href={`/services`}
-              >
-                Services
               </Link>
             </li>
             <li>

@@ -4,7 +4,10 @@ import { appendForm, getLocation } from '@/lib/helpers'
 import { useState, useEffect } from 'react'
 import { useParams } from 'next/navigation'
 import Image from 'next/image'
-import PropertyStore, { PropertyDocument } from '@/src/zustand/Property'
+import PropertyStore, {
+  Picture,
+  PropertyDocument,
+} from '@/src/zustand/Property'
 import { MessageStore } from '@/src/zustand/Message'
 import { validateInputArray } from '@/lib/validateInputArray'
 import MapBox from '@/components/Map'
@@ -35,6 +38,7 @@ const CreateProperty: React.FC = () => {
   const [feature, setFeature] = useState('')
   const { id } = useParams()
   const [preview, setPreview] = useState<string | null>(null)
+  const [pictures, setPictures] = useState<File[] | null>([])
   const [queryParams] = useState(
     `?page_size=${page_size}&page=${currentPage}&ordering=${sort}`
   )
@@ -94,32 +98,53 @@ const CreateProperty: React.FC = () => {
     })
   }
 
+  // const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   const files = e.target.files
+  //   if (!files) return
+
+  //   const fileArray = Array.from(files)
+
+  //   const previewFiles: PropertyDocument[] = fileArray.map((file) => ({
+  //     preview: URL.createObjectURL(file),
+  //     file: file, // File reference (OK, NOT circular)
+  //     name: '',
+  //     source: '',
+  //   }))
+
+  //   PropertyStore.setState((prev) => {
+  //     const existingPictures = Array.isArray(prev.propertyForm.pictures)
+  //       ? prev.propertyForm.pictures
+  //       : prev.propertyForm.pictures
+  //       ? [prev.propertyForm.pictures]
+  //       : []
+
+  //     return {
+  //       ...prev,
+  //       propertyForm: {
+  //         ...prev.propertyForm,
+  //         pictures: [...existingPictures, ...previewFiles],
+  //       },
+  //     }
+  //   })
+  // }
+
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = e.target.files
     if (!files) return
-    const fileArray = Array.from(files)
 
-    const previewFiles = fileArray.map((file) => {
-      return Object.assign(file, {
-        preview: URL.createObjectURL(file),
-      })
-    })
+    const newPictures: Picture[] = Array.from(files).map((file) => ({
+      preview: URL.createObjectURL(file),
+      file,
+      source: undefined,
+    }))
 
-    PropertyStore.setState((prev) => {
-      const existingPictures = Array.isArray(prev.propertyForm.pictures)
-        ? prev.propertyForm.pictures
-        : prev.propertyForm.pictures
-        ? [prev.propertyForm.pictures]
-        : []
-
-      return {
-        ...prev,
-        propertyForm: {
-          ...prev.propertyForm,
-          pictures: [...existingPictures, ...previewFiles],
-        },
-      }
-    })
+    PropertyStore.setState((prev) => ({
+      ...prev,
+      propertyForm: {
+        ...prev.propertyForm,
+        pictures: [...prev.propertyForm.pictures, ...newPictures],
+      },
+    }))
   }
 
   const handleDocumentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -128,7 +153,9 @@ const CreateProperty: React.FC = () => {
     const file = files[0]
 
     setDocument((prev) =>
-      prev ? { ...prev, file: file } : { file: file, source: '', name }
+      prev
+        ? { ...prev, file: file }
+        : { file: file, source: '', name, preview: '' }
     )
   }
 
@@ -152,18 +179,6 @@ const CreateProperty: React.FC = () => {
     })
   }
 
-  const handleFeatures = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    const value = e.target.value
-    setFeature(value)
-    if (value.includes(',')) {
-      propertyForm.features.push(value.replace(',', ''))
-      setForm('features', propertyForm.features)
-      setFeature('')
-    }
-  }
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -177,7 +192,9 @@ const CreateProperty: React.FC = () => {
     const value = e.target.value
 
     setDocument((prev) =>
-      prev ? { ...prev, name: value } : { name: value, source: '', file: null }
+      prev
+        ? { ...prev, name: value }
+        : { name: value, source: '', file: null, preview: '' }
     )
   }
 
@@ -219,29 +236,18 @@ const CreateProperty: React.FC = () => {
         rules: { blank: false, maxLength: 100 },
         field: 'SEO title field',
       },
-      {
-        name: 'pictures',
-        value: JSON.stringify(propertyForm.pictures),
-        rules: { blank: false, minLength: 4, maxLength: 1000 },
-        field: 'Picture field',
-      },
 
       {
         name: 'description',
         value: propertyForm.description,
-        rules: { blank: false, minLength: 100, maxLength: 2000 },
+        rules: { blank: false, minLength: 10, maxLength: 2000 },
         field: 'Description file',
       },
-      {
-        name: 'features',
-        value: JSON.stringify(propertyForm.features),
-        rules: { blank: false, maxLength: 2000 },
-        field: 'Features file',
-      },
+
       {
         name: 'documents',
         value: JSON.stringify(propertyForm.documents),
-        rules: { blank: false, minLength: 1, maxLength: 10 },
+        rules: { blank: false, minLength: 1 },
         field: 'Documents file',
       },
       {
@@ -280,13 +286,17 @@ const CreateProperty: React.FC = () => {
       setMessage(firstNonEmptyMessage, false)
       return
     }
-
     e.preventDefault()
     const data = appendForm(inputsToValidate)
+    propertyForm.pictures.forEach((pic) => {
+      if (pic.file) {
+        data.append('pictures', pic.file)
+      }
+    })
     if (id) {
-      updateProperty(`${url}/${id}${queryParams}`, data, setMessage)
+      updateProperty(`${url}/${id}`, data, setMessage)
     } else {
-      postProperty(`${url}${queryParams}`, data, setMessage)
+      postProperty(`${url}`, data, setMessage)
     }
   }
 
@@ -305,7 +315,7 @@ const CreateProperty: React.FC = () => {
                 alt="real"
               />
             )}
-            {propertyForm.pictures.length > 0 && (
+            {propertyForm.pictures && propertyForm.pictures.length > 0 && (
               <div className="grid grid-cols-4 gap-3 mb-6 w-full">
                 {PropertyStore.getState().propertyForm.pictures.map(
                   (pic, index) => (
@@ -400,37 +410,6 @@ const CreateProperty: React.FC = () => {
               </div>
             </div>
 
-            <div className="contactInput">
-              <label className="mb-1" htmlFor="">
-                Select Property Type
-              </label>
-              <div className="text relative">
-                <div
-                  onClick={() => setShowList(!showList)}
-                  className="flex mb-3 customInput cursor-pointer"
-                >
-                  <div className="text-[15px] mr-4">
-                    {propertyForm.propertyType
-                      ? propertyForm.propertyType
-                      : 'Property Type'}
-                  </div>
-                  <i className="bi bi-caret-down-fill"></i>
-                </div>
-                {showList && (
-                  <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px] bg-[var(--background)]">
-                    {propertyType.map((item, index) => (
-                      <div
-                        onClick={() => setPropertyType(item)}
-                        key={index}
-                        className="text p-3 border-b border-b-[var(--borderColor)]"
-                      >
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </div>
             {propertyForm.lat && propertyForm.lng && (
               <MapBox lat={propertyForm.lat} lng={propertyForm.lng} />
             )}
@@ -478,67 +457,82 @@ const CreateProperty: React.FC = () => {
                 className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
               />
             </div>
-            <div className="grid grid-cols-3 gap-3 mb-1">
-              <div className="contactInput">
-                <label className="mb-1" htmlFor="">
-                  Bedrooms
-                </label>
-                <input
-                  value={propertyForm.bedrooms}
-                  type="number"
-                  name="bedrooms"
-                  onChange={handleInputChange}
-                  placeholder="Enter Number"
-                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
-                />
-              </div>
-              <div className="contactInput">
-                <label className="mb-1" htmlFor="">
-                  Bathrooms
-                </label>
-                <input
-                  value={propertyForm.bathrooms}
-                  type="number"
-                  name="bathrooms"
-                  onChange={handleInputChange}
-                  placeholder="Enter Number"
-                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
-                />
-              </div>
-              <div className="contactInput">
-                <label className="mb-1" htmlFor="">
-                  Area
-                </label>
-                <input
-                  value={propertyForm.area}
-                  type="number"
-                  name="area"
-                  onChange={handleInputChange}
-                  placeholder="Enter Size"
-                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
-                />
-              </div>
-            </div>
             <div className="contactInput">
               <label className="mb-1" htmlFor="">
-                Features
+                Select Property Type
               </label>
-              <input
-                value={feature}
-                type="text"
-                onChange={handleFeatures}
-                placeholder="Enter Property Features"
-                className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
-              />
-              {propertyForm.features.map((item, index) => (
-                <div key={index} className="flex items-center">
-                  <i className="bi bi-check-lg text-[20px] mr-1 "></i>
-                  <div className="text-[var(--primaryTextColor)] mb-1">
-                    {item}
+              <div className="text relative">
+                <div
+                  onClick={() => setShowList(!showList)}
+                  className="flex mb-3 customInput cursor-pointer"
+                >
+                  <div className="text-[15px] mr-4">
+                    {propertyForm.propertyType
+                      ? propertyForm.propertyType
+                      : 'Property Type'}
                   </div>
+                  <i className="bi bi-caret-down-fill"></i>
                 </div>
-              ))}
+                {showList && (
+                  <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px] bg-[var(--background)]">
+                    {propertyType.map((item, index) => (
+                      <div
+                        onClick={() => setPropertyType(item)}
+                        key={index}
+                        className="text p-3 border-b border-b-[var(--borderColor)]"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
             </div>
+
+            {propertyForm.propertyType === 'House' && (
+              <div className="grid grid-cols-3 gap-3 mb-1">
+                <div className="contactInput">
+                  <label className="mb-1" htmlFor="">
+                    Bedrooms
+                  </label>
+                  <input
+                    value={propertyForm.bedrooms}
+                    type="number"
+                    name="bedrooms"
+                    onChange={handleInputChange}
+                    placeholder="Enter Number"
+                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                  />
+                </div>
+                <div className="contactInput">
+                  <label className="mb-1" htmlFor="">
+                    Bathrooms
+                  </label>
+                  <input
+                    value={propertyForm.bathrooms}
+                    type="number"
+                    name="bathrooms"
+                    onChange={handleInputChange}
+                    placeholder="Enter Number"
+                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                  />
+                </div>
+                <div className="contactInput">
+                  <label className="mb-1" htmlFor="">
+                    Area
+                  </label>
+                  <input
+                    value={propertyForm.area}
+                    type="number"
+                    name="area"
+                    onChange={handleInputChange}
+                    placeholder="Enter Size"
+                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                  />
+                </div>
+              </div>
+            )}
+
             <div className="contactInput">
               <label className="mb-1" htmlFor="">
                 Description

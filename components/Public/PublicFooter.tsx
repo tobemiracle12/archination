@@ -33,16 +33,6 @@ export default function PublicFooter() {
                 </li>
                 <li className="mb-3">
                   <Link href={'/'} className="flex">
-                    <i className="bi bi-caret-right-fill mr-1"></i> Property
-                  </Link>
-                </li>
-                <li className="mb-3">
-                  <Link href={'/'} className="flex">
-                    <i className="bi bi-caret-right-fill mr-1"></i> Gallery
-                  </Link>
-                </li>
-                <li className="mb-3">
-                  <Link href={'/'} className="flex">
                     <i className="bi bi-caret-right-fill mr-1"></i> Contacts
                   </Link>
                 </li>
@@ -56,11 +46,6 @@ export default function PublicFooter() {
                 <li className="mb-3">
                   <Link href={'/'} className="flex">
                     <i className="bi bi-caret-right-fill mr-1"></i> Blog
-                  </Link>
-                </li>
-                <li className="mb-3">
-                  <Link href={'/'} className="flex">
-                    <i className="bi bi-caret-right-fill mr-1"></i> Pages
                   </Link>
                 </li>
               </ul>
@@ -80,17 +65,6 @@ export default function PublicFooter() {
                 <i className="bi bi-envelope-fill mr-3"></i>{' '}
                 support@archination.io
               </li>
-            </ul>
-          </div>
-          <div className="t">
-            <div className="font-bold text-lg mb-5">Tags</div>
-            <ul className="m-0 p-0 flex flex-wrap">
-              <li className="footerPill">awareness</li>
-              <li className="footerPill">awareness</li>
-              <li className="footerPill">awareness</li>
-              <li className="footerPill">awareness</li>
-              <li className="footerPill">awareness</li>
-              <li className="footerPill">awareness</li>
             </ul>
           </div>
         </div>

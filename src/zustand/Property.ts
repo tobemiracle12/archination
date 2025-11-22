@@ -10,9 +10,16 @@ interface FetchResponse {
   data: Property
 }
 
+export interface Picture {
+  preview: string // local preview URL
+  file: File // raw file
+  source?: string // string URL after upload
+}
+
 export interface PropertyDocument {
   name: string
   source: string
+  preview: string
   file: File | null
 }
 
@@ -27,7 +34,7 @@ export interface Property {
   features: string[]
   description: string
   documents: PropertyDocument[]
-  pictures: (string | PreviewFile)[]
+  pictures: Picture[]
   lng: number
   lat: number
   propertyType: string
@@ -163,7 +170,11 @@ const PropertyStore = create<PropertyState>((set) => ({
       })
       const data = response?.data
       if (data) {
-        PropertyStore.getState().setProcessedResults(data)
+        console.log(data.results)
+        set({
+          count: data.count,
+          properties: data.results,
+        })
       }
     } catch (error: unknown) {
       console.log(error)

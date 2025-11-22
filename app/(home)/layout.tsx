@@ -2,12 +2,20 @@
 import PublicFooter from '@/components/Public/PublicFooter'
 import PublicHeader from '@/components/Public/PublicHeader'
 import PublicNavbar from '@/components/Public/PublicNavbar'
+import { MessageStore } from '@/src/zustand/Message'
+import PropertyStore from '@/src/zustand/Property'
+import { useEffect } from 'react'
 
 export default function HomeLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const { getProperties } = PropertyStore()
+  const { setMessage } = MessageStore()
+  useEffect(() => {
+    getProperties('/properties', setMessage)
+  }, [])
   return (
     <div className="text-[var(--TertiaryTextColor)]">
       <PublicHeader />
