@@ -1,5 +1,6 @@
 import DashboardHeader from '@/components/Dashboard/DashboardHeader'
 import UserResponse from '@/components/Dashboard/Messages/UserResponse'
+import MobileFooter from '@/components/Dashboard/MobileFooter'
 import DashboardSidebar from '@/components/Dashboard/Sidebar'
 
 export default function DashboardRootLayout({
@@ -13,10 +14,11 @@ export default function DashboardRootLayout({
 
       <UserResponse />
 
-      <div className="flex-1 overflow-y-auto h-[100vh]">
+      <div className="flex-1">
         <DashboardHeader />
-        <div className="p-4 rounded">{children} </div>
+        <div className="md:p-4 rounded mb-[50px]">{children} </div>
       </div>
+      <MobileFooter />
     </div>
   )
 }

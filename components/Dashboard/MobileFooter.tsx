@@ -6,7 +6,7 @@ import { useAuthStore } from '@/src/authStore'
 import { FaBars, FaBell, FaMoon, FaSignOutAlt, FaSun } from 'react-icons/fa'
 import { useTheme } from '@/context/ThemeContext'
 import { NavStore } from '@/src/appInfoStore'
-const DashboardHeader = () => {
+const MobileFooter = () => {
   const { user } = useAuthStore()
   const { theme, toggleTheme } = useTheme()
   const { toggleDashboardNav } = NavStore()
@@ -17,37 +17,7 @@ const DashboardHeader = () => {
     router.replace('/')
   }
   return (
-    <aside className="w-full px-4 bg-[var(--widgetBackground)] text-primaryTextColor py-2 flex sm:justify-between mb-2">
-      <Link href="/dashboard" className="sm:hidden mr-auto block">
-        <Image
-          style={{ height: 'auto', width: 40 }}
-          src={
-            user && user.picture
-              ? String(user.picture)
-              : '/images/logos/ArchinationIcon.png'
-          }
-          loading="lazy"
-          sizes="100vw"
-          className=""
-          width={0}
-          height={0}
-          alt="Archination User"
-        />
-      </Link>
-      <Link href="/dashboard/profile" className="mr-3 sm:mr-0">
-        <Image
-          style={{ height: 40, width: 40 }}
-          src={
-            user && user.picture ? String(user.picture) : '/images/avatar.jpg'
-          }
-          loading="lazy"
-          sizes="100vw"
-          className="rounded-full"
-          width={0}
-          height={0}
-          alt="Archination User"
-        />
-      </Link>
+    <aside className="w-full px-4 bg-[var(--cardBackground)] text-primaryTextColor py-2 flex sm:justify-between fixed bottom-0 left-0">
       <div className="flex items-center gap-3">
         <div className="sm:flex items-center hidden gap-3">
           <div onClick={toggleTheme} className="dashboardHeaderCircles">
@@ -71,4 +41,4 @@ const DashboardHeader = () => {
   )
 }
 
-export default DashboardHeader
+export default MobileFooter

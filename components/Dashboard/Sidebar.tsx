@@ -27,8 +27,8 @@ const DashboardSidebar = () => {
     <aside
       onClick={closeNave}
       className={`${
-        dashboardNav ? 'left-0' : 'left-[-1000px] lg:left-0'
-      } duration-300 fixed top-0 lg:flex w-full z-30 lg:w-auto lg:relative bg-black/50 sticky h-screen`}
+        dashboardNav ? 'left-0' : 'left-[-1500px] xl:left-0'
+      } duration-300 fixed top-0 lg:flex w-full z-30 xl:w-auto bg-black/50 xl:sticky h-screen`}
     >
       <div
         className={`w-64 bg-[var(--widgetBackground)] h-full flex flex-col justify-between sticky`}

@@ -52,7 +52,7 @@ body {
 
 /* --------------DASHBOARD STYLES-------------- */
 .dashboardHeaderCircles {
-  @apply w-10 h-10 bg-[var(--cardBackground)] rounded-full flex justify-center items-center mr-3 last:mr-0 cursor-pointer
+  @apply w-10 h-10 bg-[var(--cardBackground)] rounded-full flex justify-center items-center cursor-pointer
 }
 /* --------------DASHBOARD STYLES-------------- */
 

@@ -303,120 +303,7 @@ const CreateProperty: React.FC = () => {
   return (
     <>
       <div className="text">
-        <div className="grid grid-cols-2 gap-5">
-          <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
-            {preview && (
-              <Image
-                src={preview}
-                sizes="100vw"
-                className="h-[300px] w-full object-cover mb-5"
-                width={0}
-                height={0}
-                alt="real"
-              />
-            )}
-            {propertyForm.pictures && propertyForm.pictures.length > 0 && (
-              <div className="grid grid-cols-4 gap-3 mb-6 w-full">
-                {PropertyStore.getState().propertyForm.pictures.map(
-                  (pic, index) => (
-                    <div
-                      onClick={() =>
-                        setPreview(typeof pic === 'string' ? pic : pic.preview)
-                      }
-                      key={index}
-                      className="relative w-full cursor-pointer h-[100px] rounded overflow-hidden"
-                    >
-                      <Image
-                        src={typeof pic === 'string' ? pic : pic.preview}
-                        sizes="100vw"
-                        className="h-full w-full object-cover"
-                        width={100}
-                        height={100}
-                        alt={`property-${index}`}
-                      />
-                      <div className="text-[12px] rounded-full flex justify-center items-center-safe transition-all absolute bottom-2 right-2 bg-black/50 hover:bg-black text-white cursor-pointer w-[22px] h-[22px]">
-                        <i
-                          className="bi bi-trash3"
-                          onClick={() => handleRemovePicture(index)}
-                        ></i>
-                      </div>
-                    </div>
-                  )
-                )}
-              </div>
-            )}
-
-            <label htmlFor="picture" className="homeButton mb-5">
-              <input
-                className="absolute opacity-0"
-                type="file"
-                id="picture"
-                accept="image/*"
-                multiple
-                onChange={handleFileChange}
-              />
-              <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
-              Pictures
-            </label>
-            <div className="flex flex-wrap">
-              {propertyForm.documents.map((item, index) => (
-                <Link
-                  key={index}
-                  href={'/'}
-                  className="flex items-center mr-4 relative mb-4"
-                >
-                  <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
-                  <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
-                  <div className="text-[20px] text-[var(--primaryTextColor)]">
-                    {item.name}
-                  </div>
-                </Link>
-              ))}
-            </div>
-            <div className="grid grid-cols-2 gap-3 w-full">
-              <div className="contactInput">
-                <label className="mb-1" htmlFor="">
-                  Document Name
-                </label>
-                <input
-                  type="text"
-                  value={document?.name}
-                  onChange={setDocumentName}
-                  placeholder="Enter Property Name"
-                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
-                />
-              </div>
-              <div className="flex items-center gap-3">
-                <div className="contactInput">
-                  <label className="mb-1" htmlFor="">
-                    Upload Property Documents
-                  </label>
-                  <label htmlFor="doc" className="homeButton">
-                    <input
-                      className="absolute opacity-0"
-                      type="file"
-                      id="doc"
-                      accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.ppt,.pptx"
-                      multiple
-                      onChange={handleDocumentChange}
-                    />
-                    <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
-                    Pictures
-                  </label>
-                </div>
-                <div onClick={addDocument} className="homeButtonSm">
-                  Add
-                </div>
-              </div>
-            </div>
-
-            {propertyForm.lat && propertyForm.lng && (
-              <MapBox lat={propertyForm.lat} lng={propertyForm.lng} />
-            )}
-            <div onClick={handleGetLocation} className="homeButton">
-              Set Location
-            </div>
-          </div>
+        <div className="grid md:grid-cols-2 gap-5">
           <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
             <div className="contactInput">
               <label className="mb-1" htmlFor="">
@@ -549,6 +436,122 @@ const CreateProperty: React.FC = () => {
             </div>
             <div onClick={handleSubmit} className="homeButton">
               Submit
+            </div>
+          </div>
+          <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
+            {preview && (
+              <Image
+                src={preview}
+                sizes="100vw"
+                className="h-[300px] w-full object-cover mb-5"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            )}
+
+            {propertyForm.pictures && propertyForm.pictures.length > 0 && (
+              <div className="grid sm:grid-cols-4 grid-cols-2 gap-3 mb-6 w-full">
+                {PropertyStore.getState().propertyForm.pictures.map(
+                  (pic, index) => (
+                    <div
+                      onClick={() =>
+                        setPreview(typeof pic === 'string' ? pic : pic.preview)
+                      }
+                      key={index}
+                      className="relative w-full cursor-pointer h-[100px] rounded overflow-hidden"
+                    >
+                      <Image
+                        src={typeof pic === 'string' ? pic : pic.preview}
+                        sizes="100vw"
+                        className="h-full w-full object-cover"
+                        width={100}
+                        height={100}
+                        alt={`property-${index}`}
+                      />
+                      <div className="text-[12px] rounded-full flex justify-center items-center-safe transition-all absolute bottom-2 right-2 bg-black/50 hover:bg-black text-white cursor-pointer w-[22px] h-[22px]">
+                        <i
+                          className="bi bi-trash3"
+                          onClick={() => handleRemovePicture(index)}
+                        ></i>
+                      </div>
+                    </div>
+                  )
+                )}
+              </div>
+            )}
+
+            <label htmlFor="picture" className="homeButton mb-5">
+              <input
+                className="absolute opacity-0 w-0.5 h-0.5"
+                type="file"
+                id="picture"
+                accept="image/*"
+                multiple
+                onChange={handleFileChange}
+              />
+              <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
+              Pictures
+            </label>
+            <div className="flex flex-wrap">
+              {propertyForm.documents.map((item, index) => (
+                <Link
+                  key={index}
+                  href={'/'}
+                  className="flex items-center mr-4 relative mb-4"
+                >
+                  <i className="bi bi-file-earmark-pdf mr-2 text-[45px]"></i>
+                  <i className="bi bi-trash3 absolute top-0 -right-2 text-black cursor-pointer shadow-lg text-[20px]"></i>
+                  <div className="text-[20px] text-[var(--primaryTextColor)]">
+                    {item.name}
+                  </div>
+                </Link>
+              ))}
+            </div>
+            <div className="grid lg:grid-cols-2 gap-3 w-full">
+              <div className="contactInput">
+                <label className="mb-1" htmlFor="">
+                  Document Name
+                </label>
+                <input
+                  type="text"
+                  value={document?.name}
+                  onChange={setDocumentName}
+                  placeholder="Enter Property Name"
+                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                />
+              </div>
+              <div className="flex items-center gap-3">
+                <div className="contactInput">
+                  <label className="mb-1" htmlFor="">
+                    Upload Property Documents
+                  </label>
+                  <div className="flex gap-3">
+                    <label htmlFor="doc" className="homeButton">
+                      <input
+                        className="absolute opacity-0 w-0.5 h-0.5"
+                        type="file"
+                        id="doc"
+                        accept=".pdf,.doc,.docx,.xls,.xlsx,.txt,.ppt,.pptx"
+                        multiple
+                        onChange={handleDocumentChange}
+                      />
+                      <i className="bi bi-cloud-arrow-up text-2xl mr-2"></i>
+                      Pictures
+                    </label>
+                    <div onClick={addDocument} className="homeButtonSm">
+                      Add
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {propertyForm.lat && propertyForm.lng && (
+              <MapBox lat={propertyForm.lat} lng={propertyForm.lng} />
+            )}
+            <div onClick={handleGetLocation} className="homeButton">
+              Set Location
             </div>
           </div>
         </div>
