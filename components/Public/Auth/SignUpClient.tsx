@@ -2,7 +2,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import axios from 'axios'
-import _debounce from 'lodash/debounce'
+
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { validateInputs, ValidationResult } from '@/lib/validateInputs'

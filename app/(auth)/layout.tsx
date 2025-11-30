@@ -1,44 +1,54 @@
+// components/AuthLayout.tsx or app/auth/layout.tsx
 import Image from 'next/image'
+import { ReactNode } from 'react'
 
-export default function AuthLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode
-}>) {
+export default function AuthLayout({ children }: { children: ReactNode }) {
   return (
-    <div
-      className="inset-0 z-50 flex items-center justify-center min-h-[100vh] bg-cover bg-center bg-no-repeat"
-      style={{
-        backgroundImage: `url('/RealEstateImage.png')`,
-        backgroundAttachment: 'fixed', // optional: parallax feel
-      }}
-    >
-      <div className="w-full">
-        <div className="flex w-full justify-center">
-          <div className="relative flex flex-col w-full md:max-w-4xl md:rounded-[15px] bg-white shadow-lg md:flex-row overflow-hidden">
-            {/* Left Panel - Quote Section */}
-            <div className="md:w-1/2 w-full h-[40vh] md:h-full flex-col justify-center bg-cover bg-center  md:flex overflow-hidden rounded-bl-[15px] md:rounded-tr-[15px] rounded-br-[15px] relative">
-              <div className="text-white text-[20px] absolute top-20 left-0 px-4 font-bold">
-                "Every home has a story. Let us help you find yours."
-              </div>
-              <Image
-                src="/signUpImage2.png"
-                loading="lazy"
-                sizes="100vw"
-                className="h-full w-full object-cover"
-                width={0}
-                height={0}
-                alt="Archination Logo"
-              />
-              <div className="text-white absolute bottom-10 left-0 px-4">
-                "Schooling Social Developers."
-              </div>
-            </div>
+    <div className="fixed inset-0 z-50 flex items-center justify-center min-h-screen bg-black/50">
+      {/* Full-screen background */}
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `url('/RealEstateImage.png')`,
+          backgroundAttachment: 'fixed',
+        }}
+      />
+      <div className="absolute inset-0 bg-black/40" /> {/* Dark overlay */}
+      <div className="relative z-10 w-full max-w-5xl mx-4">
+        <div className="flex flex-col overflow-hidden rounded-2xl bg-white shadow-2xl md:flex-row">
+          {/* Left Panel – Image + Quotes */}
+          <div className="relative md:w-1/2 w-full h-64 md:h-auto overflow-hidden">
+            <Image
+              src="/signUpImage2.png"
+              alt="Dream home"
+              fill
+              className="object-cover"
+              priority
+            />
 
-            {/* Right Panel - Form */}
-            <div className="w-full sm:px-8 px-3 py-8 md:w-1/2 min-h-[80vh]">
-              {children}
+            {/* Gradient overlay for text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+
+            {/* Quotes */}
+            <div className="relative z-10 p-8 text-white flex flex-col justify-between h-full">
+              <div>
+                <p className="text-2xl md:text-3xl font-bold leading-tight">
+                  "Every home has a story.
+                  <br />
+                  Let us help you find yours."
+                </p>
+              </div>
+              <div>
+                <p className="text-lg italic opacity-90">
+                  "Schooling Social Developers."
+                </p>
+              </div>
             </div>
+          </div>
+
+          {/* Right Panel – Form */}
+          <div className="w-full md:w-1/2 bg-white p-6 sm:p-10 flex items-center justify-center min-h-[60vh]">
+            <div className="w-full max-w-md">{children}</div>
           </div>
         </div>
       </div>
