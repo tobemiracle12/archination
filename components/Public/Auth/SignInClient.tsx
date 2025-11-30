@@ -17,7 +17,7 @@ export default function SignInClient() {
   const [showPassword, setShowPassword] = useState(false)
 
   const [formData, setFormData] = useState({
-    username: '',
+    email: '',
     password: '',
   })
 
@@ -29,8 +29,8 @@ export default function SignInClient() {
     e.preventDefault()
     setError(null)
 
-    const { password, username } = formData
-    const validation = validateSignUp(password, username)
+    const { password, email } = formData
+    const validation = validateSignUp(password, email)
 
     if (!validation.valid) {
       setError(validation)
@@ -39,7 +39,7 @@ export default function SignInClient() {
 
     setLoading(true)
     const form = new FormData()
-    form.append('email', formData.username.trim().toLocaleLowerCase())
+    form.append('email', formData.email.trim().toLocaleLowerCase())
     form.append('password', formData.password.trim())
 
     try {
@@ -86,28 +86,28 @@ export default function SignInClient() {
       </div>
       <form onSubmit={handleSubmit} className="space-y-5">
         <div>
-          <label className="homeInputLabel">Username</label>
+          <label className="homeInputLabel ">Email</label>
           <input
             type="text"
-            className="customHomeInput pl-2"
+            className="customHomeInput pl-5"
             name="username"
-            value={formData.username}
+            value={formData.email}
             onChange={(e) =>
-              setFormData({ ...formData, username: e.target.value })
+              setFormData({ ...formData, email: e.target.value })
             }
-            placeholder="Enter username"
+            placeholder="Enter email"
           />
-          {error?.usernameMessage && (
-            <div className="text-red-500 text-sm">{error.usernameMessage}</div>
+          {error?.emailMessage && (
+            <div className="text-red-500 text-sm">{error.emailMessage}</div>
           )}
         </div>
         <div>
           <label className="homeInputLabel">Password</label>
 
-          <div className="relative">
-            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg"></i>
+          <div className="relative ">
+            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg pl-3"></i>
             <input
-              className="customHomeInput pl-7"
+              className="customHomeInput pl-12"
               placeholder="Enter password"
               name="password"
               value={formData.password}
@@ -151,11 +151,47 @@ export default function SignInClient() {
         )}
         <Link
           href={`/forgotten-password`}
-          className="mt-1 text-center text-sm text-[var(--custom-text-color)] block hover:underline"
+          className="mt-1 text-center text-sm text-[var(--custom-text-color)] block hover:underlinec mb-4"
         >
           Forgot Password?
         </Link>
       </form>
+      <div className="flex items-center mb-3">
+        <div className="flex-1 h-[1px] bg-[var(--secondaryBackground)]"></div>
+        <div className="text mx-2">Or With</div>
+        <div className="flex-1 h-[1px] bg-[var(--secondaryBackground)]"></div>
+      </div>
+      <div className="flex justify-center w-full max-w-[500px]">
+        <div className="flex  w-full rounded-full overflow-hidden justify-center px-3 items-center">
+          <div className="flex h-[35px] w-[35px] rounded-full border-[var(--secondaryBackground)] border-1 items-center mr-10 justify-center">
+            <Link href={`/sign-up`}>
+              {' '}
+              <Image
+                src={'/GoogleIcon2.png'}
+                sizes="100vw"
+                className="h-[17px] w-[17px]"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            </Link>
+          </div>
+          <div className="flex h-[35px] w-[35px] rounded-full border-[var(--secondaryBackground)] border-1 items-center justify-center">
+            {' '}
+            <Link href={`/sign-up`}>
+              {' '}
+              <Image
+                src={'/AppleIcon3.png'}
+                sizes="100vw"
+                className="h-[17px] w-auto"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

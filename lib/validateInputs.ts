@@ -11,18 +11,17 @@ export interface ValidationResult {
 export const validateInputs = (
   password: string,
   confirmPassword: string,
-  username: string,
   email: string
 ): ValidationResult => {
   const result: ValidationResult = { valid: true }
 
-  const usernameRegex =
-    /^(?=.{4,}$)(?!.*[_.]{2})[a-zA-Z][a-zA-Z0-9._]*[a-zA-Z0-9]$/
-  if (!usernameRegex.test(username)) {
-    result.valid = false
-    result.usernameMessage =
-      'Username must be at least 4 characters, start with a letter, contain only letters, numbers, dots, or underscores, and not end with a dot or underscore.'
-  }
+  // const usernameRegex =
+  //   /^(?=.{4,}$)(?!.*[_.]{2})[a-zA-Z][a-zA-Z0-9._]*[a-zA-Z0-9]$/
+  // if (!usernameRegex.test(username)) {
+  //   result.valid = false
+  //   result.usernameMessage =
+  //     'Username must be at least 4 characters, start with a letter, contain only letters, numbers, dots, or underscores, and not end with a dot or underscore.'
+  // }
 
   // Validate email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -50,8 +49,8 @@ export const validateInputs = (
 
 export const validateSignUp = (
   password: string,
-  username: string,
-  email?: string
+  email: string
+  // email?: string
 ): ValidationResult => {
   const result: ValidationResult = { valid: true }
 
@@ -77,13 +76,13 @@ export const validateSignUp = (
     result.emailMessage = 'Invalid email address'
   }
 
-  const usernameRegex =
-    /^(?=.{4,}$)(?!.*[_.]{2})[a-zA-Z][a-zA-Z0-9._]*[a-zA-Z0-9]$/
-  if (!usernameRegex.test(username)) {
-    result.valid = false
-    result.usernameMessage =
-      'Username must be at least 4 characters, start with a letter, contain only letters, numbers, dots, or underscores, and not end with a dot or underscore.'
-  }
+  // const usernameRegex =
+  //   /^(?=.{4,}$)(?!.*[_.]{2})[a-zA-Z][a-zA-Z0-9._]*[a-zA-Z0-9]$/
+  // if (!usernameRegex.test(username)) {
+  //   result.valid = false
+  //   result.usernameMessage =
+  //     'Username must be at least 4 characters, start with a letter, contain only letters, numbers, dots, or underscores, and not end with a dot or underscore.'
+  // }
 
   const passwordRegex =
     /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/

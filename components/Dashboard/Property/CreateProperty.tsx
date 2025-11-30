@@ -304,7 +304,7 @@ const CreateProperty: React.FC = () => {
     <>
       <div className="text">
         <div className="grid md:grid-cols-2 gap-5">
-          <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
+          <div className="flex flex-col items-start bg-[var(--primaryBackground)] p-5 rounded-xl">
             <div className="contactInput">
               <label className="mb-1" htmlFor="">
                 Property Name
@@ -438,7 +438,7 @@ const CreateProperty: React.FC = () => {
               Submit
             </div>
           </div>
-          <div className="flex flex-col items-start bg-[var(--widgetBackground)] p-5">
+          <div className="flex flex-col items-start bg-[var(--primaryBackground)] p-5">
             {preview && (
               <Image
                 src={preview}

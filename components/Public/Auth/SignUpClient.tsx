@@ -10,7 +10,8 @@ import apiRequest from '@/lib/axios'
 import { useAuthStore } from '@/src/authStore'
 import { ApiResponse } from '@/src/interface'
 import { MessageStore } from '@/src/appInfoStore'
-import { getUserDeviceInfo, validateUsername } from '@/lib/helpers'
+import { getUserDeviceInfo } from '@/lib/helpers'
+import Spinner from '@/components/Spinner'
 
 export default function SignUpClient() {
   const router = useRouter()
@@ -32,56 +33,12 @@ export default function SignUpClient() {
     setShowPassword(!showPassword)
   }
 
-  const handleUsernameSearch = _debounce(
-    async (e: React.ChangeEvent<HTMLInputElement>) => {
-      const value = e.target.value.trim()
-      const validation = validateUsername(value)
-      if (!validation.valid) {
-        setMessage(validation.message, false)
-        setLoading(false)
-        return
-      }
-      try {
-        setLoading(true)
-
-        const response = await apiRequest<ApiResponse>(
-          `/users/username/${value}`
-        )
-
-        const results = response?.data
-        if (results) {
-          setMessage('Sorry! This username is already taken', false)
-          setFormData((prev) => ({
-            ...prev,
-            username: '',
-          }))
-        } else {
-          setMessage('Great! The username is available', true)
-          setFormData((prev) => ({
-            ...prev,
-            username: value,
-          }))
-        }
-      } catch (error) {
-        console.log(error)
-      } finally {
-        setLoading(false)
-      }
-    },
-    1000
-  )
-
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(null)
 
-    const { password, username, email, confirmPassword } = formData
-    const validation = validateInputs(
-      password,
-      confirmPassword,
-      username,
-      email
-    )
+    const { password, email, confirmPassword } = formData
+    const validation = validateInputs(password, confirmPassword, email)
     if (!validation.valid) {
       setError(validation)
       return
@@ -126,49 +83,16 @@ export default function SignUpClient() {
   }
   return (
     <>
-      <div className="flex items-end mb-10">
-        <Image
-          style={{ height: 'auto', width: 40 }}
-          src="/images/logos/ArchinationIcon.png"
-          loading="lazy"
-          sizes="100vw"
-          className="my-auto mr-2"
-          width={0}
-          height={0}
-          alt="Archination Logo"
-        />
-        <h2 className="text-2xl uppercase mb-[-6px] font-semibold text-[var(--custom-text-color)]">
-          Archi Nation
-        </h2>
+      <div className="text-[25px] text-black font-bold mb-4">
+        Create Account
       </div>
+
       <form onSubmit={handleSubmit} className="space-y-5">
-        <div>
-          <label className="homeInputLabel">Username</label>
-          <div className="relative">
-            <input
-              type="text"
-              className="customHomeInput pl-2"
-              name="username"
-              value={formData.username}
-              onChange={(e) => {
-                handleUsernameSearch(e)
-                setFormData({ ...formData, username: e.target.value })
-              }}
-              placeholder="Enter username"
-            />
-            {loading && (
-              <i className="bi bi-opencollective absolute top-1 right-1 loading text-[var(--customTextColor)]"></i>
-            )}
-          </div>
-          {error?.usernameMessage && (
-            <div className="text-red-500 text-sm">{error.usernameMessage}</div>
-          )}
-        </div>
         <div>
           <label className="homeInputLabel">Email</label>
           <input
             type="text"
-            className="customHomeInput pl-2"
+            className="customHomeInput pl-5"
             name="email"
             value={formData.email}
             onChange={(e) =>
@@ -184,9 +108,9 @@ export default function SignUpClient() {
           <label className="homeInputLabel">Password</label>
 
           <div className="relative">
-            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg"></i>
+            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg pl-3"></i>
             <input
-              className="customHomeInput pl-7"
+              className="customHomeInput pl-12"
               placeholder="Enter password"
               name="password"
               value={formData.password}
@@ -210,9 +134,9 @@ export default function SignUpClient() {
           <label className="homeInputLabel">Confirm Password</label>
 
           <div className="relative">
-            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg"></i>
+            <i className="bi bi-shield-lock absolute top-3 left-2 text-lg pl-3"></i>
             <input
-              className="customHomeInput pl-7"
+              className="customHomeInput pl-12"
               placeholder="Confirm password"
               name="confirmPassword"
               value={formData.confirmPassword}
@@ -265,13 +189,69 @@ export default function SignUpClient() {
           </Link>
           <div className="f-response-msg auth"></div>
         </div>
-        <button type="submit" className="homeButton">
-          {loading ? 'Processing...' : 'Sign Up'}
-        </button>
+        {loading ? (
+          <button className="homeButton mb-6">
+            <Spinner size={30} />
+          </button>
+        ) : (
+          <button type="submit" className="homeButton mb-6">
+            Sign Up
+          </button>
+        )}
         {generalError && (
           <div className="text-red-500 text-center text-sm">{generalError}</div>
         )}
       </form>
+      <div className="flex items-center mb-3">
+        <div className="flex-1 h-[1px] bg-[var(--secondaryBackground)]"></div>
+        <div className="text mx-2">Or Sign Up With</div>
+        <div className="flex-1 h-[1px] bg-[var(--secondaryBackground)]"></div>
+      </div>
+
+      <div className="flex justify-center w-full max-w-[500px]">
+        <div className="flex  w-full rounded-full overflow-hidden justify-center px-3 items-center">
+          <div className="flex h-[35px] w-[35px] rounded-full border-[var(--secondaryBackground)] border-1 items-center mr-10 justify-center">
+            <Link href={`/sign-up`}>
+              {' '}
+              <Image
+                src={'/GoogleIcon2.png'}
+                sizes="100vw"
+                className="h-[17px] w-[17px]"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            </Link>
+          </div>
+          <div className="flex h-[35px] w-[35px] rounded-full border-[var(--secondaryBackground)] border-1 items-center justify-center">
+            {' '}
+            <Link href={`/sign-up`}>
+              {' '}
+              <Image
+                src={'/AppleIcon3.png'}
+                sizes="100vw"
+                className="h-[17px] w-auto"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
     </>
   )
+}
+
+{
+  /* <div className="text w-[35px] h-[35px] rounded-full justify-center items-center border-2 border-[var(--secondaryBackground)">
+  <Image
+    src={'/GoogleIcon2.png'}
+    sizes="100vw"
+    className="h-[17px] w-[17px]"
+    width={0}
+    height={0}
+    alt="real"
+  />
+</div> */
 }

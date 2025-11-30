@@ -3,7 +3,7 @@ import HeroSearchBar from './HeroSearchBar'
 
 export default function Hero() {
   return (
-    <section className="relative h-[90vh] w-full text-white overflow-hidden">
+    <section className="relative h-[100vh] w-full text-white overflow-hidden">
       <video
         autoPlay
         muted
@@ -26,6 +26,34 @@ export default function Hero() {
         </p>
 
         <HeroSearchBar />
+        <div className="fixed w-full bottom-10 flex justify-center">
+          <div className="grid grid-cols-4 fixed bg-[var(--cardBackground)] rounded-full text-[var(--tertiaryTextColor)] w-full max-w-[1000px]">
+            <div className="flex justify-center py-[10px] items-center">
+              <i className="bi bi-house-fill text-[var(--customTextColor)] mr-4 text-[25px]"></i>
+              <div className="text-[var(--tertiaryTextColor)] text-[20px]">
+                Home
+              </div>
+            </div>
+            <div className="flex justify-center py-[10px] items-center">
+              <i className="bi bi-search text-[var(--customTextColor)] mr-4 text-[25px]"></i>
+              <div className="text-[var(--tertiaryTextColor)] text-[20px]">
+                Search
+              </div>
+            </div>
+            <div className="flex justify-center py-[10px] items-center">
+              <i className="bi bi-heart-fill text-[var(--customTextColor)] mr-4 text-[25px]"></i>
+              <div className="text-[var(--tertiaryTextColor)] text-[20px]">
+                Favourite
+              </div>
+            </div>
+            <div className="flex justify-center py-[10px] items-center">
+              <i className="bi bi-person-fill text-[var(--customTextColor)] mr-4 text-[25px]"></i>
+              <div className="text-[var(--tertiaryTextColor)] text-[20px]">
+                Profile
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

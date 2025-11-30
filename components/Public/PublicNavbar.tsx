@@ -20,137 +20,23 @@ export default function PublicNavbar() {
   }
 
   return (
-    <nav className="md:bg-[var(--custom-text-color)]  md:text-white text-[var(--tertiaryTextColor)] md:flex justify-center bg-[var(--custom-text-color)] hidden">
-      <div className="custom-container">
-        <div
-          onClick={closeNave}
-          className={`${
-            vNav ? 'left-0' : 'left-[-1000px] md:left-0'
-          } md:relative fixed  top-0 h-full bg-black/65 md:bg-transparent w-full z-50`}
-        >
-          <ul className="md:flex md:w-full  w-[300px] bg-white md:bg-[var(--custom-text-color)] h-full">
-            <li className="md:hidden pt-4 px-3 mb-5">
-              <Link href="/" className="sm:w-40 w-32 max-w-40">
-                <Image
-                  style={{ height: 'auto' }}
-                  src="/images/logos/WhiteArchinationLogo.png"
-                  loading="lazy"
-                  sizes="100vw"
-                  className="sm:w-40 w-32"
-                  width={0}
-                  height={0}
-                  alt="Archination Logo"
-                />
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/' ? 'bg-[var(--custom-light-color)]' : ''
-                }`}
-                href={`/home`}
-              >
-                Home
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/designs'
-                    ? 'bg-[var(--custom-light-color)]'
-                    : ''
-                }`}
-                href={`/designs`}
-              >
-                Designs
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/properties'
-                    ? 'bg-[var(--custom-light-color)]'
-                    : ''
-                }`}
-                href={`/map`}
-              >
-                Map
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/contact'
-                    ? 'bg-[var(--custom-light-color)]'
-                    : ''
-                }`}
-                href={`/contact`}
-              >
-                Contact
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks ${
-                  pathName === '/blog' ? 'bg-[var(--custom-light-color)]' : ''
-                }`}
-                href={`/blog`}
-              >
-                Blog
-              </Link>
-            </li>
-            <li className="ml-auto">
-              <Link
-                className={`navLinks ${
-                  pathName === '/sign-up'
-                    ? 'bg-[var(--custom-light-color)]'
-                    : ''
-                }`}
-                href={`/sign-up`}
-              >
-                Sign Up
-              </Link>
-            </li>
-            <li>
-              <Link
-                className={`navLinks bg-[var(--customTextDarkColor)]`}
-                href={`/sign-in`}
-              >
-                Sign In
-              </Link>
-            </li>
-          </ul>
+    <div className=" w-full flex justify-center left-0 sticky top-3 z-50">
+      <div className="flex px-3 bg-[var(--primaryBackground)] rounded-full text-[var(--tertiaryTextColor)] w-full max-w-[1200px] overflow-hidden py-3">
+        <Link href={`/`} className="flex justify-center items-center mr-auto">
+          <div className="flex justify-center py-[5px] items-center bg-[var(--customTextColor)] text-white rounded-full px-[20px]">
+            <i className="bi bi-house-fill mr-4 text-[25px]"></i>
+            <div className="text-[20px]">Home</div>
+          </div>
+        </Link>
+        <div className="flex bg-[var(--secondaryBackground)] rounded-full px-3 items-center cursor-pointer w-full max-w-[600px]">
+          <input
+            className="flex-1 text-[20px] outline-none border-none"
+            type="text"
+            placeholder="search properties"
+          />
+          <i className="bi bi-search text-[25px]"></i>
         </div>
-        <ul className="flex md:hidden items-center w-full">
-          <li className="sm:flex justify-start gap-4 text-white hidden">
-            <FaFacebookF />
-            <FaTwitter />
-            <FaYoutube />
-            <FaLinkedinIn />
-          </li>
-          <li className="ml-auto">
-            <Link
-              className={`navLinks ${
-                pathName === '/sign-up'
-                  ? 'bg-[var(--custom-light-color)]'
-                  : 'text-white'
-              }`}
-              href={`/sign-up`}
-            >
-              Create Account
-            </Link>
-          </li>
-          <li>
-            <Link
-              className={`navLinks bg-[var(--custom-light-color)] text-white`}
-              href={`/sign-in`}
-            >
-              Sign In
-            </Link>
-          </li>
-        </ul>
-        {/* </div> */}
       </div>
-    </nav>
+    </div>
   )
 }

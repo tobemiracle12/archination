@@ -7,7 +7,7 @@
 :root {
   --background: #d4d7db;
   --secondaryBackground: #F7F7F7;
-  --cardBackground: #FFFFFF;
+  --primaryBackground: #FFFFFF;
   --widgetBackground: #eceff4;
   --primaryTextColor: #4a5565;
   --secondaryTextColor: #1e2939;
@@ -72,18 +72,18 @@ body {
 }
 
 .customHomeInput{
-  @apply mt-1 w-full rounded-md border border-gray-300 pr-2 py-2 focus:border-[var(--customTextColor)] focus:outline-none focus:ring-1 focus:ring-[var(--customTextColor)]
+  @apply mt-1 w-full rounded-full border border-gray-300 pr-2  py-2 focus:border-[var(--customTextColor)] focus:outline-none focus:ring-1 focus:ring-[var(--customTextColor)]
 }
 
 .homeButton{
-  @apply w-full text-center cursor-pointer rounded-md bg-[var(--customTextColor)] py-2 text-white hover:bg-[var(--customTextDarkColor)]
+  @apply w-full text-center cursor-pointer bg-[var(--customTextColor)] py-2 text-white hover:bg-[var(--customTextDarkColor)] rounded-full flex justify-center
 }
 .homeButtonSm{
   @apply  text-center px-3 cursor-pointer rounded-md bg-[var(--customTextColor)] py-2 text-white hover:bg-[var(--customTextDarkColor)]
 }
 
 .homeInputLabel{
-  @apply block text-sm font-medium text-[var(--secondary-text-color)]
+  @apply block text-sm font-medium text-[var(--secondary-text-color)] px-4
 }
 
 .navLinks{
@@ -95,7 +95,7 @@ body {
 }
 
 .propertyPill{
-  @apply flex items-center text-white bg-green-600 hover:bg-green-600/50 cursor-pointer rounded-[5px] py-[2px] px-1
+  @apply flex items-center text-white  cursor-pointer
 }
 
 .selectList{

@@ -46,48 +46,10 @@ function PropertyDetails() {
   }, [id])
   return (
     <div>
-      {propertyForm.pictures.length > 0 && (
-        <div
-          style={{
-            backgroundImage: `url(${propertyForm.pictures[0]})`,
-            backgroundPosition: 'center',
-          }}
-          className="flex justify-center bg-cover bg-no-repeat bg-center bg-gray-200"
-        >
-          <div className="flex w-full bg-black/50 md:py-[70px] justify-center min-h-[40vh] items-center">
-            <div className="customContainer">
-              <div className="flex text-white md:text-[40px] text-[30px] font-bold drop-shadow-lg">
-                {propertyForm.name}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
-      <div className=" flex justify-center bg-[var(--secondaryBackground)] md:py-[75px] py-[30px]">
+      <div className=" flex justify-center bg-[var(--secondaryBackground)] md:py-[30px] py-[30px]">
         <div className="customContainer">
-          <div className="grid md:grid-cols-2 grid-cols-1 md:mb-10 mb-7">
-            <div className="flex flex-col">
-              <div className="text-[20px] text-black font-semibold mb-2">
-                {propertyForm.name}
-              </div>
-              <div className="text-[16px] text-[var(--primaryTextColor)] mb-3">
-                {propertyForm.address}
-              </div>
-            </div>
-            <div className="flex md:justify-end items-start">
-              <div className="md:border-l border-l-gray-400 md:mr-5 mr-0"></div>
-              <div className="flex flex-col leading-8">
-                <div className="text-[var(--secondaryTextColor)]">For Sale</div>
-                <div className="md:text-[35px] text-[27px] text-[var(--customTextColor)]">
-                  ₦{formatMoney(propertyForm.price)}
-                </div>
-              </div>
-            </div>
-          </div>
-
           {propertyForm.pictures.length > 0 && (
-            <div className="relative w-full md:min-h-[75vh] rounded-[5px] overflow-hidden md:mb-5 mb-2">
+            <div className="relative w-full md:min-h-[40vh] overflow-hidden md:mb-5 mb-2">
               <Swiper
                 modules={[EffectFade, Autoplay, Navigation]}
                 navigation
@@ -107,7 +69,7 @@ function PropertyDetails() {
                   swiper.navigation.init()
                   swiper.navigation.update()
                 }}
-                className="h-full w-full"
+                className="h-full w-full max-w-[700px]  rounded-[20px]"
               >
                 {propertyForm.pictures.map((item, index) => (
                   <SwiperSlide key={index}>
@@ -124,8 +86,27 @@ function PropertyDetails() {
               </Swiper>
             </div>
           )}
+          <div className="grid md:grid-cols-2 grid-cols-1 md:mb-10 mb-7">
+            <div className="flex flex-col">
+              <div className="text-[30px] text-black font-semibold mb-2">
+                {propertyForm.name}
+              </div>
+              <div className="text-[16px] text-[var(--primaryTextColor)] mb-3">
+                {propertyForm.address}
+              </div>
+            </div>
+            <div className="flex md:justify-end items-start">
+              <div className="md:border-l border-l-gray-400 md:mr-5 mr-0"></div>
+              <div className="flex flex-col leading-8">
+                <div className="text-[var(--secondaryTextColor)]">For Sale</div>
+                <div className="md:text-[35px] text-[27px] text-[var(--customTextColor)]">
+                  ₦{formatMoney(propertyForm.price)}
+                </div>
+              </div>
+            </div>
+          </div>
 
-          <div className="flex flex-col lg:col-span-2  bg-white shadow md:px-[25px] px-[14px] py-[15px] mb-12">
+          <div className="flex flex-col lg:col-span-2  bg-white shadow md:px-[25px] px-[14px] py-[15px] mb-5">
             <div className="flex justify-between w-full mb-6 flex-wrap">
               <div className="flex items-center mb-3">
                 <div className="text-[15px] text-[var(--secondaryTextColor)] mr-1">

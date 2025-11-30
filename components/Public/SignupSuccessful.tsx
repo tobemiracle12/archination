@@ -11,6 +11,7 @@ export default function SignupSuccessful() {
         <h2 className="text-2xl mb-3 uppercase text-center font-semibold text-[var(--custom-text-color)]">
           Congratulations!!!
         </h2>
+
         <Image
           style={{ height: 'auto', width: '70%' }}
           src="/images/congratulations.png"
@@ -24,12 +25,12 @@ export default function SignupSuccessful() {
         <h2 className="text-xl text-center font-semibold mb-2">
           Your account has been created successfully
         </h2>
-        <button
+        <div
           onClick={() => router.replace(`/sign-in`)}
           className="homeButton block w-full"
         >
           Go To Dashboard
-        </button>
+        </div>
       </form>
     </>
   )

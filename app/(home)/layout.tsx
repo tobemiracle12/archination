@@ -1,7 +1,7 @@
 'use client'
-import PublicFooter from '@/components/Public/PublicFooter'
-import PublicHeader from '@/components/Public/PublicHeader'
+import BottomNavBar from '@/components/BottomNavBar'
 import PublicNavbar from '@/components/Public/PublicNavbar'
+import SideNavBar from '@/components/SideNavBar'
 import { MessageStore } from '@/src/zustand/Message'
 import PropertyStore from '@/src/zustand/Property'
 import { useEffect } from 'react'
@@ -17,19 +17,22 @@ export default function HomeLayout({
     getProperties('/properties', setMessage)
   }, [])
   return (
-    <div className="text-[var(--TertiaryTextColor)]">
-      <PublicHeader />
-      <PublicNavbar />
-      {children}
+    <div className="text-[var(--tertiaryTextColor)] bg-[var(--secondaryBackground)] min-h-[100vh] flex">
+      <SideNavBar />
+      <div className="flex-1 h-[100vh] overflow-auto md:px-3 lg:px-5">
+        <PublicNavbar />
+        <div className="py-10"> {children}</div>
 
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed cursor-pointer bottom-4 right-4 bg-[var(--customTextDarkColor)] hover:bg-[var(--customTextColor)] text-white w-10 h-10 rounded shadow-lg transition"
-        aria-label="Scroll to Top"
-      >
-        ↑
-      </button>
-      <PublicFooter />
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="fixed cursor-pointer bottom-4 right-4 bg-[var(--customTextDarkColor)] hover:bg-[var(--customTextColor)] text-white w-10 h-10 rounded shadow-lg transition"
+          aria-label="Scroll to Top"
+        >
+          ↑
+        </button>
+
+        <BottomNavBar />
+      </div>
     </div>
   )
 }

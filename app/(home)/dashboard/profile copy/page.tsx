@@ -1,11 +1,11 @@
 import PlayersLineChart from '@/components/Dashboard/LineChart'
 
-export default function DashboardPage() {
+export default function ProfilePage() {
   return (
     <>
       <div className="mb-6">
         <div className="flex justify-between items-center">
-          <h1 className="text-2xl font-semibold">Dashboard</h1>
+          <h1 className="text-2xl font-semibold">Profile</h1>
           <div className="flex gap-2">
             {['Today', 'Last week', 'Last month'].map((period) => (
               <button
