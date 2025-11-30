@@ -6,10 +6,12 @@ import { FaBell, FaExchangeAlt, FaUser } from 'react-icons/fa'
 import { usePathname, useRouter } from 'next/navigation'
 import { FaGear } from 'react-icons/fa6'
 import { useAuthStore } from '@/src/authStore'
+import { NavStore } from '@/src/appInfoStore'
 
 export default function SideNavBar() {
   const { theme } = useTheme()
   const { user, logout } = useAuthStore()
+  const { vNav, toggleVNav } = NavStore()
   const pathname = usePathname()
   const router = useRouter()
 
@@ -19,8 +21,18 @@ export default function SideNavBar() {
   }
 
   return (
-    <div className="md:flex w-[270px] py-3 px-3 h-[100vh] overflow-auto sticky top-0 hidden">
-      <div className="h-full w-full bg-[var(--primaryBackground)] rounded-2xl flex flex-col">
+    <div
+      onClick={toggleVNav}
+      className={`${
+        vNav ? 'left-0' : 'left-[-100%]'
+      } lg:flex lg:w-[270px] transition duration-500 lg:py-3 lg:px-3 h-[100vh] overflow-auto lg:sticky top-0 flex fixed z-50 bg-black/50 lg:bg-transparent w-full`}
+    >
+      <div
+        onClick={(e) => {
+          e.stopPropagation()
+        }}
+        className="h-full w-[270px] bg-[var(--primaryBackground)] rounded-2xl flex flex-col"
+      >
         <div>
           <div className="px-5 pt-3">
             <Link href="/" className="sm:w-40 w-32 max-w-40">

@@ -1,22 +1,8 @@
 'use client'
 import Link from 'next/link'
-import Hero from '@/components/Public/Hero'
 import Image from 'next/image'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
 import { BsCameraFill } from 'react-icons/bs'
-import {
-  AreaChartIcon,
-  BathIcon,
-  BedDouble,
-  BedDoubleIcon,
-  Heart,
-  LandPlot,
-  ShowerHead,
-  Square,
-  VideoIcon,
-} from 'lucide-react'
-import FeatureHomes from '@/components/Public/FeatureHomes'
+import { Heart, VideoIcon } from 'lucide-react'
 import PropertyStore from '@/src/zustand/Property'
 import { formatMoney } from '@/lib/helpers'
 export default function Home() {
@@ -24,52 +10,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* <div className="w-[300px] h-[350px] rounded-2xl overflow-hidden relative">
-        <div className="top-3 right-0 px-3 z-20 absolute">
-          <i className="bi bi-heart text-[25px] px-3"></i>
-        </div>
-        <Image
-          src="/propertyImage5.jpg"
-          sizes="100vw"
-          className="h-full w-full object-cover"
-          width={0}
-          height={0}
-          alt="real"
-        />
-        <div className="flex flex-col absolute bottom-4 left-0 z-20 px-3">
-          <div className="text-[var(--primaryBackground)]">Kaylas's Haven</div>
-          <div className="text-[var(--primaryBackground)]">
-            New Heaven Road, Enugu
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-5"></div>
-      </div> */}
-
-      {/* <div className="flex flex-col bg-[var(--secondaryBackground)] w-[300px] py-[75px] px-[15px]">
-        <div className="flex bg-[var(--primaryBackground)] rounded-full px-5 items-center cursor-pointer w-full max-w-[250px] py-1 mb-5">
-          <i className="bi bi-envelope text-[12px] mr-3"></i>{' '}
-          <input
-            className="text-[14px] outline-none border-none"
-            type="text"
-            placeholder="Email"
-          />
-        </div>
-        <div className="flex bg-[var(--primaryBackground)] rounded-full px-5 items-center cursor-pointer w-full max-w-[250px] py-1 mb-8">
-          <i className="bi bi-lock text-[12px] mr-3"></i>{' '}
-          <input
-            className="text-[14px] outline-none border-none"
-            type="text"
-            placeholder="password"
-          />
-        </div>
-        <Link
-          href={`/`}
-          className=" bg-green-900 rounded-full px-5 text-center cursor-pointer w-full max-w-[250px] py-1 text-[var(--primaryBackground)]"
-        >
-          Login
-        </Link>
-      </div> */}
-
       {/* ///////BLOG3 SECTION//////////// */}
       <div className="flex justify-center bg-[var(--secondaryBackground)] py-[75px]">
         <div className="customContainer">

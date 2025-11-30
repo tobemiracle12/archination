@@ -32,16 +32,10 @@ const CreateProperty: React.FC = () => {
   const [name, setName] = useState('')
   const [document, setDocument] = useState<PropertyDocument | null>(null)
   const { setMessage } = MessageStore()
-  const [currentPage] = useState(1)
-  const [page_size] = useState(20)
-  const [sort] = useState('-createdAt')
-  const [feature, setFeature] = useState('')
+
   const { id } = useParams()
   const [preview, setPreview] = useState<string | null>(null)
-  const [pictures, setPictures] = useState<File[] | null>([])
-  const [queryParams] = useState(
-    `?page_size=${page_size}&page=${currentPage}&ordering=${sort}`
-  )
+
   const [showList, setShowList] = useState(false)
   const propertyType = ['House', 'Land', 'Furniture', 'Rent']
   useEffect(() => {
@@ -315,7 +309,7 @@ const CreateProperty: React.FC = () => {
                 name="name"
                 onChange={handleInputChange}
                 placeholder="Enter Property Name"
-                className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                className="input"
               />
             </div>
             <div className="contactInput">
@@ -328,7 +322,7 @@ const CreateProperty: React.FC = () => {
                 name="address"
                 onChange={handleInputChange}
                 placeholder="Enter Property Address"
-                className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                className="input"
               />
             </div>
             <div className="contactInput">
@@ -341,7 +335,7 @@ const CreateProperty: React.FC = () => {
                 name="price"
                 onChange={handleInputChange}
                 placeholder="Enter Property Price"
-                className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                className="input"
               />
             </div>
             <div className="contactInput">
@@ -351,7 +345,7 @@ const CreateProperty: React.FC = () => {
               <div className="text relative">
                 <div
                   onClick={() => setShowList(!showList)}
-                  className="flex mb-3 customInput cursor-pointer"
+                  className="flex mb-3 input cursor-pointer w-full justify-between"
                 >
                   <div className="text-[15px] mr-4">
                     {propertyForm.propertyType
@@ -361,7 +355,7 @@ const CreateProperty: React.FC = () => {
                   <i className="bi bi-caret-down-fill"></i>
                 </div>
                 {showList && (
-                  <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px] bg-[var(--background)]">
+                  <div className="text border border-[var(--borderColor)] cursor-pointer absolute left-0 w-full top-[49px] bg-[var(--secondaryBackground)]">
                     {propertyType.map((item, index) => (
                       <div
                         onClick={() => setPropertyType(item)}
@@ -388,7 +382,7 @@ const CreateProperty: React.FC = () => {
                     name="bedrooms"
                     onChange={handleInputChange}
                     placeholder="Enter Number"
-                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                    className="input"
                   />
                 </div>
                 <div className="contactInput">
@@ -401,7 +395,7 @@ const CreateProperty: React.FC = () => {
                     name="bathrooms"
                     onChange={handleInputChange}
                     placeholder="Enter Number"
-                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                    className="input"
                   />
                 </div>
                 <div className="contactInput">
@@ -414,7 +408,7 @@ const CreateProperty: React.FC = () => {
                     name="area"
                     onChange={handleInputChange}
                     placeholder="Enter Size"
-                    className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                    className="input"
                   />
                 </div>
               </div>
@@ -428,7 +422,7 @@ const CreateProperty: React.FC = () => {
               <textarea
                 value={propertyForm.description}
                 placeholder="Enter Property Description"
-                className="p-3 border border-gray-200 outline-0 text-black rounded resize-none min-h-[200px] bg-[var(--background)]"
+                className="p-3 border border-gray-200 outline-0 text-black rounded resize-none min-h-[200px] bg-[var(--secondaryBackground)]"
                 name="description"
                 id=""
                 onChange={handleInputChange}
@@ -518,7 +512,7 @@ const CreateProperty: React.FC = () => {
                   value={document?.name}
                   onChange={setDocumentName}
                   placeholder="Enter Property Name"
-                  className="p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--background)]"
+                  className="input"
                 />
               </div>
               <div className="flex items-center gap-3">

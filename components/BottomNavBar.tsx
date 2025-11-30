@@ -1,7 +1,10 @@
 'use client'
+import { useAuthStore } from '@/src/authStore'
 import Link from 'next/link'
 
 export default function BottomNavBar() {
+  const { user } = useAuthStore()
+
   return (
     // <div className="sticky w-full z-30 bottom-3 flex justify-center ">
     //   <div className="grid grid-cols-4 bg-[var(--cardBackground)] rounded-full text-[var(--tertiaryTextColor)] w-full max-w-[1000px] overflow-hidden">
@@ -32,35 +35,32 @@ export default function BottomNavBar() {
     //   </div>
     // </div>
 
-    <div className="flex bottom-3 justify-center w-full sticky z-40">
-      <div className="grid grid-cols-4 rounded-full w-full max-w-[650px] bg-[var(--primaryBackground)]">
-        <Link href={`/`} className="flex items-center py-[10px] justify-center">
-          <div className="flex items-center py-[5px] px-[20px] justify-center bg-[var(--customTextColor)] rounded-full text-white">
-            <i className="bi bi-house-fill mr-4  text-[25px]"></i>
-            <div className="text-[20px]">Home</div>
-          </div>
+    <div className="flex sm:bottom-3 bottom-0 justify-center w-full sticky z-40">
+      <div className="grid grid-cols-4 rounded-tl-lg rounded-tr-lg w-full max-w-[650px] bg-[var(--primaryBackground)] sm:rounded-full border border-[var(--borderColor)]">
+        <Link href={`/`} className="bottomNavItem">
+          <i className="bi bi-house-fill"></i>
+          <div className="">Home</div>
         </Link>
-        <Link href={`/`} className="flex items-center py-[10px] justify-center">
-          <i className="bi bi-hourglass-split mr-2 text-[var(--tertiaryTextColor)] text-[25px]"></i>
-          <div className="text-[20px] text-[var(--tertiaryTextColor)]">
-            Auction
-          </div>
+
+        <Link href={`/auctions`} className="bottomNavItem">
+          <i className="bi bi-hourglass-split"></i>
+          <div className="">Auction</div>
         </Link>
-        <Link href={`/`} className="flex items-center py-[10px] justify-center">
-          <i className="bi bi-app-indicator mr-2 text-[var(--tertiaryTextColor)] text-[25px]"></i>
-          <div className="text-[20px] text-[var(--tertiaryTextColor)]">
-            Plans
-          </div>
+        <Link href={`/plans`} className="bottomNavItem">
+          <i className="bi bi-app-indicator"></i>
+          <div className=" ">Plans</div>
         </Link>
-        <Link
-          href={`/sign-up`}
-          className="flex items-center py-[10px] justify-center"
-        >
-          <i className="bi bi-person-fill text-[var(--tertiaryTextColor)] text-[25px] mr-2"></i>
-          <div className="text-[20px] text-[var(--tertiaryTextColor)]">
-            Profile
-          </div>
-        </Link>
+        {user ? (
+          <Link href={`/dashboard`} className="bottomNavItem">
+            <i className="bi bi-person-fill"></i>
+            <div className="">Profile</div>
+          </Link>
+        ) : (
+          <Link href={`/sign-in`} className="bottomNavItem">
+            <i className="bi bi-person-fill"></i>
+            <div className="">Login</div>
+          </Link>
+        )}
       </div>
     </div>
   )

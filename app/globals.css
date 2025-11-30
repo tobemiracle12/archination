@@ -5,22 +5,16 @@
 
 /* Light theme (default) */
 :root {
-  --background: #d4d7db;
+  --borderColor: #d4d7db;
   --secondaryBackground: #F7F7F7;
   --primaryBackground: #FFFFFF;
-  --widgetBackground: #eceff4;
-  --primaryTextColor: #4a5565;
+ --primaryTextColor: #4a5565;
   --secondaryTextColor: #1e2939;
-  --tertiaryTextColor: #1e2939;
-  --custom-text-color: #55C233;
-  --customTextColor: #55C233;
-  --customTextDarkColor: #309b0f;
-  --custom-light-color: #6AEC41;
-  --customLightColor: #6AEC41;
-  --primary-text-color: #4a5565;
-  --secondary-text-color: #1e2939;
-  --borderColor: #c5cbd8;
-   /* --foreground: #1a1a1c; */
+--customTextColor: #55C233;
+--customTextDarkColor: #309b0f;
+--customLightColor: #6AEC41;
+
+
 }
 
 /* Dark theme overrides using Tailwind's `dark` class */
@@ -56,6 +50,13 @@ body {
 }
 /* --------------DASHBOARD STYLES-------------- */
 
+.bottomNavItem {
+  @apply flex items-center py-[20px] justify-center  text-[var(--primaryTextColor)] gap-2 lg:text-[20px]
+}
+.bottomNavItem.active {
+  @apply  text-[var(--customTextColor)]
+}
+
 .contactInput {
   @apply flex flex-col mb-4 w-full
 }
@@ -84,6 +85,10 @@ body {
 
 .homeInputLabel{
   @apply block text-sm font-medium text-[var(--secondary-text-color)] px-4
+}
+
+.input {
+ @apply p-3 border border-gray-200 outline-0 text-black rounded bg-[var(--secondaryBackground)]
 }
 
 .navLinks{
