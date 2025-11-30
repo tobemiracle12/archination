@@ -56,7 +56,6 @@ export default function SignUpClient() {
     form.append('password', formData.password.trim())
     form.append('device', getUserDeviceInfo().device)
     form.append('operatingSystem', getUserDeviceInfo().os)
-    form.append('signupIp', String(userIp))
 
     try {
       setLoading(true)
