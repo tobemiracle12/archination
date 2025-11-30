@@ -12,11 +12,6 @@ export default function PublicNavbar() {
     clearNav()
   }, [pathName])
 
-  const closeNave = (e: React.MouseEvent) => {
-    e.stopPropagation()
-    clearNav()
-  }
-
   return (
     <div className=" w-full flex justify-center left-0 sticky lg:top-3 top-0 z-40">
       <div className="flex px-3 bg-[var(--primaryBackground)] text-[var(--tertiaryTextColor)] w-full lg:max-w-[1200px] overflow-hidden py-3 lg:rounded-full border border-[var(--borderColor)]">

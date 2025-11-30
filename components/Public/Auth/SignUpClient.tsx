@@ -9,7 +9,7 @@ import { validateInputs, ValidationResult } from '@/lib/validateInputs'
 import apiRequest from '@/lib/axios'
 import { useAuthStore } from '@/src/authStore'
 import { ApiResponse } from '@/src/interface'
-import { MessageStore } from '@/src/appInfoStore'
+
 import { getUserDeviceInfo } from '@/lib/helpers'
 import Spinner from '@/components/Spinner'
 
@@ -20,7 +20,6 @@ export default function SignUpClient() {
   const [generalError, setGeneralError] = useState<string | null>(null)
   const [showPassword, setShowPassword] = useState(false)
   const [isChecked, setIsChecked] = useState(false)
-  const { userIp, setMessage } = MessageStore()
 
   const [formData, setFormData] = useState({
     username: '',

@@ -1,13 +1,11 @@
 'use client'
 import Link from 'next/link'
-import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { useAuthStore } from '@/src/authStore'
 import { FaBars, FaBell, FaMoon, FaSignOutAlt, FaSun } from 'react-icons/fa'
 import { useTheme } from '@/context/ThemeContext'
 import { NavStore } from '@/src/appInfoStore'
 const MobileFooter = () => {
-  const { user } = useAuthStore()
   const { theme, toggleTheme } = useTheme()
   const { toggleDashboardNav } = NavStore()
 

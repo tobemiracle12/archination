@@ -1,7 +1,6 @@
 'use client'
 import Image from 'next/image'
 
-import HeroSearchBar from '@/components/Public/HeroSearchBar'
 import Link from 'next/link'
 import BottomNavBar from '@/components/BottomNavBar'
 

@@ -1,22 +1,11 @@
 'use client'
 import Link from 'next/link'
-import Hero from '@/components/Public/Hero'
+
 import Image from 'next/image'
-import { Navigation, Pagination } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
+
 import { BsCameraFill } from 'react-icons/bs'
-import {
-  AreaChartIcon,
-  BathIcon,
-  BedDouble,
-  BedDoubleIcon,
-  Heart,
-  LandPlot,
-  ShowerHead,
-  Square,
-  VideoIcon,
-} from 'lucide-react'
-import FeatureHomes from '@/components/Public/FeatureHomes'
+import { Heart, VideoIcon } from 'lucide-react'
+
 import PropertyStore from '@/src/zustand/Property'
 import { formatMoney } from '@/lib/helpers'
 export default function Home() {
