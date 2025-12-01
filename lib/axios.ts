@@ -3,8 +3,8 @@ import { useAuthStore } from '@/src/authStore'
 const apiClient = axios.create({
   baseURL:
     process.env.NODE_ENV === 'production'
-      ? process.env.NEXT_PUBLIC_PROD_API_URL
-      : process.env.NEXT_PUBLIC_DEV_API_URL,
+      ? 'https://biunto-api.onrender.com/api/v1/'
+      : 'https://biunto-api.onrender.com/api/v1/',
   timeout: 60000,
 })
 
