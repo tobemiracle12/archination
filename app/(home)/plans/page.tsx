@@ -4,7 +4,13 @@ import Link from 'next/link'
 import Image from 'next/image'
 
 import { BsCameraFill } from 'react-icons/bs'
-import { Heart, VideoIcon } from 'lucide-react'
+import {
+  AreaChartIcon,
+  BathIcon,
+  BedDoubleIcon,
+  Heart,
+  VideoIcon,
+} from 'lucide-react'
 
 import PropertyStore from '@/src/zustand/Property'
 import { formatMoney } from '@/lib/helpers'
@@ -133,21 +139,21 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="flex flex-col w-full max-w-[400px]">
-        <div className="t relative justify-center mb-3">
+      {/* <div className="flex flex-col w-full max-w-[400px] bg-[var(--borderColor)] overflow-hidden rounded-2xl">
+        <div className="relative justify-center mb-3">
           <Image
             src="/RealEstateImage.png"
             sizes="100vw"
-            className="h-[250px] w-full object-cover"
+            className="h-[250px] w-full object-cover rounded-tr-2xl rounded-tl-2xl"
             width={0}
             height={0}
             alt="real"
           />
 
-          <i className="bi bi-upload absolute top-6 right-4 z-20 text-3xl rounded-full w-[50px] h-[50px] bg-[var(--primaryBackground)] text-center items-center py-2"></i>
+          <i className="bi bi-upload flex absolute top-6 right-4 z-20 text-3xl rounded-full w-[50px] h-[50px] bg-[var(--primaryBackground)] justify-center items-center shadow-lg transition hover:scale-110"></i>
         </div>
         <div className="px-4">
-          <div className="text-[var(--tertiaryTextColor)] font-bold">
+          <div className="text-[var(--secondaryTextColor)] font-bold">
             Aurora Retreat
           </div>
           <div className="flex mb-3">
@@ -159,7 +165,9 @@ export default function Home() {
               </i>
             </Link>
           </div>
-          <div className="text-blue-500 mb-2 text-[20px]">₦50,000,000.00</div>
+          <div className="text-blue-500 mb-2 text-[20px] font-bold">
+            ₦50,000,000.00
+          </div>
           <div className="grid grid-cols-3 mb-4">
             <div className="flex">
               <BedDoubleIcon className="mr-2" />
@@ -177,17 +185,61 @@ export default function Home() {
               <div className="text">Beds</div>
             </div>
           </div>
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-3 mb-4 gap-2">
             <div className="">
               <Image
                 src="/propertyImage3.jpg"
                 sizes="100vw"
-                className="h-[100px] w-[100px] object-cover rounded-2xl"
+                className="h-[100px] w-full object-cover rounded-2xl"
                 width={0}
                 height={0}
                 alt="real"
               />
             </div>
+            <div className="">
+              <Image
+                src="/propertyImage4.jpg"
+                sizes="100vw"
+                className="h-[100px] w-full object-cover rounded-2xl"
+                width={0}
+                height={0}
+                alt="real"
+              />
+            </div>
+            <div className="">
+              <Image
+                src="/propertyImage5.jpg"
+                sizes="100vw"
+                className="h-full w-full object-cover rounded-2xl"
+                width={120}
+                height={100}
+                alt="real"
+              />
+            </div>
+          </div>
+          <div className="flex flex-col py-[14px] px-[12px] rounded-2xl bg-[var(--primaryBackground)] mb-6">
+            <div className="text-[20px] text-[var(--secondaryTextColor)] font-bold mb-4">
+              Features
+            </div>
+            <div className="text-[17px] text-[var(--secondaryTextColor)] font-semibold mb-1">
+              Spacious Interiors:
+            </div>
+            <div className="text-[13px] mb-1">
+              Open floor plans with floor-to-ceiling windows that blend nature
+              with your living space
+            </div>
+            <div className="text-[15px] text-[var(--secondaryTextColor)] mb-1 font-semibold">
+              Eco-friendly Materials:
+            </div>
+            <div className="text-[13px]">
+              Sustainable materials used throughout the retreat for a harmonous
+              relationship with Nature
+            </div>
+          </div>
+        </div>
+        <div className="bg-[var(--primaryBackground)] px-[15px] rounded-br-2xl rounded-bl-2xl pb-6">
+          <div className="rounded-full py-[15px] justify-center text-center bg-[var(--secondaryTextColor)] w-full">
+            <div className="text-white ">Book Now</div>
           </div>
         </div>
       </div> */}

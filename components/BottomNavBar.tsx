@@ -35,7 +35,7 @@ export default function BottomNavBar() {
     //   </div>
     // </div>
 
-    <div className="flex sm:bottom-3 bottom-0 justify-center w-full sticky z-40">
+    <div className="flex sm:bottom-3 bottom-0 justify-center w-full sm:sticky z-40 fixed">
       <div className="grid grid-cols-4 rounded-tl-lg rounded-tr-lg w-full max-w-[650px] bg-[var(--primaryBackground)] sm:rounded-full border border-[var(--borderColor)]">
         <Link href={`/`} className="bottomNavItem">
           <i className="bi bi-house-fill"></i>

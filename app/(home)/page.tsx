@@ -62,74 +62,79 @@ export default function Home() {
       {/* ///////BLOG3 SECTION//////////// */}
       <div className="flex justify-center bg-[var(--secondaryBackground)] py-[75px]">
         <div className="customContainer">
-          <div className="flex md:flex-col flex-col">
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-5">
-              {properties.map((item, index) => (
-                <div key={index} className="flex overflow-hidden flex-col">
-                  {item.pictures.length > 0 && (
-                    <div className="rounded-[10px] relative overflow-hidden w-full">
-                      <Image
-                        src={String(item.pictures[0])}
-                        sizes="100vw"
-                        className="h-[250px] xl:h-[320px] w-full object-cover"
-                        width={0}
-                        height={0}
-                        alt="real"
-                      />
-                      <div className="flex text-center z-20 items-center absolute right-3 top-4">
-                        <div className="relative group inline-block">
-                          <Heart className="w-4 h-5 cursor-pointer text-[var(--primaryBackground)]" />
-                          <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                            Add to Favorites
+          {properties.length > 0 && (
+            <div className="flex md:flex-col flex-col">
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 gap-5">
+                {properties.map((item, index) => (
+                  <div key={index} className="flex overflow-hidden flex-col">
+                    {item.pictures.length > 0 && (
+                      <div className="rounded-[10px] relative overflow-hidden w-full">
+                        <Image
+                          src={String(item.pictures[0])}
+                          sizes="100vw"
+                          className="h-[250px] xl:h-[320px] w-full object-cover"
+                          width={0}
+                          height={0}
+                          alt="real"
+                        />
+                        <div className="flex text-center z-20 items-center absolute right-3 top-4">
+                          <div className="relative group inline-block">
+                            <Heart className="w-4 h-5 cursor-pointer text-[var(--primaryBackground)]" />
+                            <div className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-green-900 text-white text-xs px-1 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              Add to Favorites
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div className="flex absolute z-20 top-4 left-3">
-                        <div className="propertyPill mr-4">
-                          <BsCameraFill className="mr-3" size={15} />6
-                        </div>
-                        <div className="propertyPill mr-1">
-                          <VideoIcon className="mr-3" size={18} />1
-                        </div>
-                      </div>
-                      <div className="flex text-black mb-6 absolute left-3 bottom-0 z-20 ">
-                        <div className="text-sm mr-7 text-[var(--primaryBackground)]">
-                          <div className="font-bold mb-2">Bedrooms</div>
-                          <div className="flex text-center justify-center">
-                            {item.bedrooms}
+                        <div className="flex absolute z-20 top-4 left-3">
+                          <div className="propertyPill mr-4">
+                            <BsCameraFill className="mr-3" size={15} />6
+                          </div>
+                          <div className="propertyPill mr-1">
+                            <VideoIcon className="mr-3" size={18} />1
                           </div>
                         </div>
+                        <div className="flex text-black mb-6 absolute left-3 bottom-0 z-20 ">
+                          <div className="text-sm mr-7 text-[var(--primaryBackground)]">
+                            <div className="font-bold mb-2">Bedrooms</div>
+                            <div className="flex text-center justify-center">
+                              {item.bedrooms}
+                            </div>
+                          </div>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
                       </div>
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent z-10"></div>
-                    </div>
-                  )}
-                  <div className="py-[10px] px-[12px] ">
-                    <div className="text-[20px] text-black font-semibold hover:text-green-500 transition duration-300 mb-2">
-                      {' '}
-                      <Link href={`/dashboard/seller/${item._id}`} className="">
-                        {item.name}
-                      </Link>
-                    </div>
-                    <div className="flex mb-3">
-                      <Link href={`/property-details/${item._id}`}>
+                    )}
+                    <div className="py-[10px] px-[12px] ">
+                      <div className="text-[20px] text-black font-semibold hover:text-green-500 transition duration-300 mb-2">
                         {' '}
-                        <i className="bi bi-geo-alt-fill mr-2 text-[15px] text-green-500 underline">
+                        <Link
+                          href={`/dashboard/seller/${item._id}`}
+                          className=""
+                        >
+                          {item.name}
+                        </Link>
+                      </div>
+                      <div className="flex mb-3">
+                        <Link href={`/property-details/${item._id}`}>
                           {' '}
-                          {item.address}
-                        </i>
-                      </Link>
-                    </div>
+                          <i className="bi bi-geo-alt-fill mr-2 text-[15px] text-green-500 underline">
+                            {' '}
+                            {item.address}
+                          </i>
+                        </Link>
+                      </div>
 
-                    <div className="flex items-center justify-between ">
-                      <div className="text-green-500 lg:text-[20px]">
-                        ₦{formatMoney(item.price)}
+                      <div className="flex items-center justify-between ">
+                        <div className="text-green-500 lg:text-[20px]">
+                          ₦{formatMoney(item.price)}
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
 
