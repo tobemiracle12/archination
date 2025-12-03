@@ -1,3 +1,5 @@
+import { User } from './zustand/User'
+
 export interface Alert {
   title: string
   text: string
@@ -53,52 +55,4 @@ interface ResponseData {
   user: User
   tokens: unknown
   results: unknown[]
-}
-
-export interface User {
-  _id: string
-  username: string
-  userId: string
-  displayName: string
-  intro: string
-  isChecked?: boolean
-  isActive?: boolean
-  email: string
-  phone: string
-  passport: string
-  picture: File | string
-  media: File | string
-  address: string
-  signupIp: string
-  signupCountry: string
-  countryFlag: string
-  level: number | null
-  followers: number
-  posts: number
-  following: number
-  replies: number
-  comments: number
-  postVisibility: string
-  commentAbility: string
-  userStatus: string
-  staffPositions: string
-  notifications: string
-  socials: string
-  isFirstTime: boolean
-  isDocument: boolean
-  isOrigin: boolean
-  isPublic: boolean
-  isContact: boolean
-  isBio: boolean
-  isRelated: boolean
-  isEducationDocument: boolean
-  isEducationHistory: boolean
-  isEducation: boolean
-  isAccountSet: boolean
-  isAccountOpen: boolean
-  isSuspendeded: boolean
-  isVerified: boolean
-  isOnVerification: boolean
-  dob: Date | null
-  createdAt: Date | null
 }
