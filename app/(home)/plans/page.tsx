@@ -139,7 +139,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* <div className="flex flex-col w-full max-w-[400px] bg-[var(--borderColor)] overflow-hidden rounded-2xl">
+      <div className="flex flex-col w-full max-w-[400px] bg-[var(--borderColor)] overflow-hidden rounded-2xl mb-8">
         <div className="relative justify-center mb-3">
           <Image
             src="/RealEstateImage.png"
@@ -185,14 +185,14 @@ export default function Home() {
               <div className="text">Beds</div>
             </div>
           </div>
-          <div className="grid grid-cols-3 mb-4 gap-2">
+          <div className="flex mb-4 gap-2">
             <div className="">
               <Image
                 src="/propertyImage3.jpg"
                 sizes="100vw"
-                className="h-[100px] w-full object-cover rounded-2xl"
-                width={0}
-                height={0}
+                className="h-full w-full object-cover rounded-2xl"
+                width={120}
+                height={100}
                 alt="real"
               />
             </div>
@@ -200,9 +200,9 @@ export default function Home() {
               <Image
                 src="/propertyImage4.jpg"
                 sizes="100vw"
-                className="h-[100px] w-full object-cover rounded-2xl"
-                width={0}
-                height={0}
+                className="h-full w-full object-cover rounded-2xl"
+                width={120}
+                height={100}
                 alt="real"
               />
             </div>
@@ -221,14 +221,14 @@ export default function Home() {
             <div className="text-[20px] text-[var(--secondaryTextColor)] font-bold mb-4">
               Features
             </div>
-            <div className="text-[17px] text-[var(--secondaryTextColor)] font-semibold mb-1">
+            <div className="text-[17px] text-[var(--secondaryTextColor)] font-semibold">
               Spacious Interiors:
             </div>
             <div className="text-[13px] mb-1">
               Open floor plans with floor-to-ceiling windows that blend nature
               with your living space
             </div>
-            <div className="text-[15px] text-[var(--secondaryTextColor)] mb-1 font-semibold">
+            <div className="text-[15px] text-[var(--secondaryTextColor)] font-semibold">
               Eco-friendly Materials:
             </div>
             <div className="text-[13px]">
@@ -237,12 +237,58 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="bg-[var(--primaryBackground)] px-[15px] rounded-br-2xl rounded-bl-2xl pb-6">
+        <Link
+          href={`/`}
+          className="bg-[var(--primaryBackground)] px-[15px] rounded-br-2xl rounded-bl-2xl pb-6"
+        >
           <div className="rounded-full py-[15px] justify-center text-center bg-[var(--secondaryTextColor)] w-full">
             <div className="text-white ">Book Now</div>
           </div>
+        </Link>
+      </div>
+
+      <div className="flex flex-col py-[30px] px-[15px] bg-[var(--primaryBackground)] max-w-[400px] w-full">
+        <div className="flex justify-between mb-4">
+          <i className="bi bi-list text-3xl"></i>
+          <div className="flex">
+            <div className="rounded-full border border-gray-400 items-center justify-center w-8 h-8 flex">
+              <i className="bi bi-bell-fill"></i>
+            </div>
+            <div className="rounded-4xl border border-gray-400 items-center justify-center w-8 h-8 flex">
+              <i className="bi bi-search"></i>
+            </div>
+          </div>
         </div>
-      </div> */}
+        <div className="flex mb-4">
+          <div className="border border-l border-l-black h-[45px] flex items-center mr-2"></div>
+          <div className="flex flex-col mt-1.5">
+            <div className="text leading-1">Discover your</div>
+            <div className="text-[28px] text-[var(--secondaryTextColor)]">
+              Dream Home
+            </div>
+          </div>
+        </div>
+        <div className="flex gap-3">
+          <Link
+            href={`/`}
+            className="rounded-full py-[5px] justify-center text-center bg-[var(--secondaryTextColor)] px-[17px]"
+          >
+            <div className="text-white text-[15px]">House</div>
+          </Link>
+          <Link
+            href={`/`}
+            className="rounded-full py-[5px] justify-center text-center bg-[var(--secondaryBackground)] px-[17px]"
+          >
+            <div className="text-[15px]">Apartments</div>
+          </Link>
+          <Link
+            href={`/`}
+            className="rounded-full py-[5px] justify-center text-center bg-[var(--secondaryBackground)] px-[17px]"
+          >
+            <div className="text-[15px]">Condominium</div>
+          </Link>
+        </div>
+      </div>
     </div>
   )
 }

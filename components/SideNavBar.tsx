@@ -60,7 +60,11 @@ export default function SideNavBar() {
             <NavItem label="Notifications" icon={<FaBell />} />
 
             <div className="text-xs text-gray-400 mt-4">ACCOUNT</div>
-            <NavItem label="Verification" />
+            <NavItem
+              label="Verification"
+              link="/verification"
+              pathname={pathname}
+            />
             <NavItem label="Designer" />
             <NavItem label="Agent" />
             <NavItem label="Seller" link="/seller" pathname={pathname} />
